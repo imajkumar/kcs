@@ -29,7 +29,7 @@
 
 
                                     ?>
-    <input type="hidden" id="uploadAvatarPhoto" value="11">
+    <input type="hidden" id="uploadFileAction" value="1">
                                     <div class="col-lg-12">
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg31 text-right col-form-label"></label>

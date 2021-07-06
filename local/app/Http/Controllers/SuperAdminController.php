@@ -74,6 +74,7 @@ class SuperAdminController extends Controller
     public function uploadFile(Request $request)
     {
         if($request->action==1){
+           
             if ($request->hasFile('file')) {
                 $file = $request->file('file');
                 $filename = $request->txtSID . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
@@ -92,7 +93,7 @@ class SuperAdminController extends Controller
             );
         }
    
-    //return response()->json($data);
+      return response()->json($data);
    
     }
      //uploadFile

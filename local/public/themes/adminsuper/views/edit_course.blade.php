@@ -23,8 +23,8 @@
                                     <!--begin::Wizard Step 1-->
                                     <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
                                        
-                                       <input type="text" id="txtAction" name="txtAction" value="__edit">
-                                       <input type="text" id="txtID" name="txtID" value="{{$data->id}}">
+                                       <input type="hidden" id="txtAction" name="txtAction" value="__edit">
+                                       <input type="hidden" id="txtID" name="txtID" value="{{$data->id}}">
                                         <!--begin::Group-->
                                         <div class="form-group row fv-plugins-icon-container">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Course Name</label>

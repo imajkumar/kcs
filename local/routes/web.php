@@ -57,6 +57,9 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
 
     Route::get('/edit-user/{id}', [App\Http\Controllers\SuperAdminController::class, 'edit_user'])->name('edit_user');
+    Route::get('/edit-course/{id}', [App\Http\Controllers\SuperAdminController::class, 'edit_course'])->name('edit_course');
+
+
     Route::get('/view-user/{id}', [App\Http\Controllers\SuperAdminController::class, 'view_user'])->name('view_user');
 
     
@@ -71,7 +74,13 @@ Route::group(['middleware' => 'role:superadmin'], function() {
    
 
     Route::get('/user-list', [App\Http\Controllers\SuperAdminController::class, 'userList'])->name('userList');
+    Route::get('/course-list', [App\Http\Controllers\SuperAdminController::class, 'courseList'])->name('courseList');
+
+    
     Route::get('/add-user', [App\Http\Controllers\SuperAdminController::class, 'addUser'])->name('addUser');
+    Route::get('/add-course', [App\Http\Controllers\SuperAdminController::class, 'addCourse'])->name('addCourse');
+
+
 
 
     Route::get('/admin-profile', [App\Http\Controllers\SuperAdminController::class, 'admin_profile'])->name('admin_profile');
@@ -98,6 +107,12 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
     Route::post('/saveUserEdit', [App\Http\Controllers\SuperAdminController::class, 'saveUserEdit'])->name('saveUserEdit');
     Route::post('/saveUserData', [App\Http\Controllers\SuperAdminController::class, 'saveUserData'])->name('saveUserData');
+    Route::post('/saveCourseData', [App\Http\Controllers\SuperAdminController::class, 'saveCourseData'])->name('saveCourseData');
+    Route::post('/saveCourseEdit', [App\Http\Controllers\SuperAdminController::class, 'saveCourseEdit'])->name('saveCourseEdit');
+
+    
+
+
     Route::post('/uploadFile', [App\Http\Controllers\SuperAdminController::class, 'uploadFile'])->name('uploadFile');
 
     
@@ -117,6 +132,10 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
     
     Route::post('/deleteUser', [App\Http\Controllers\SuperAdminController::class, 'deleteUser'])->name('deleteUser');
+    Route::post('/deleteCouse', [App\Http\Controllers\SuperAdminController::class, 'deleteCouse'])->name('deleteCouse');
+
+    
+
     Route::post('/UserResetPassword', [App\Http\Controllers\SuperAdminController::class, 'UserResetPassword'])->name('UserResetPassword');
 
 
@@ -154,6 +173,9 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
 
    Route::get('/getDatatableUserList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableUserList'])->name('getDatatableUserList');
+   Route::get('/getDatatableCourseList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableCourseList'])->name('getDatatableCourseList');
+   
+
 
 
 

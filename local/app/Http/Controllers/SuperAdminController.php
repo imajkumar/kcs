@@ -157,6 +157,74 @@ class SuperAdminController extends Controller
         );
         return response()->json($data);
     }
+    //saveCourseData
+
+    //saveCourseEdit
+    public function saveCourseEdit(Request $request)
+    {
+
+        $affected = DB::table('course_list')
+        ->where('id', $request->txtID)
+        ->update([
+            'name' => $request->name,         
+
+        ]);
+
+        
+
+          
+
+
+                $data = array(
+                    'msg' => 'Submitted Successfully ',
+                    'status' => 1
+                );
+                return response()->json($data);
+            
+        
+    }
+
+    //saveCourseEdit
+
+    public function saveCourseData(Request $request)
+    {
+
+
+        
+
+          
+
+            $users = DB::table('course_list')
+                ->where('name', $request->name)
+                ->first();
+
+            if ($users == null) {
+               
+                DB::table('course_list')->insert([
+                    'name' => $request->name,
+                    'created_by' => Auth::user()->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'created_at' => date('Y-m-d H:i:s'),
+    
+                ]);
+                //send email to user
+                $data = array(
+                    'msg' => 'Submitted Successfully',
+                    'status' => 1
+                );
+                return response()->json($data);
+            } else {
+                $data = array(
+                    'msg' => 'Already Added ',
+                    'status' => 1
+                );
+                return response()->json($data);
+            }
+        
+    }
+
+    //saveCourseData
+
     //saveUserData
     public function saveUserData(Request $request)
     {
@@ -377,6 +445,17 @@ class SuperAdminController extends Controller
 
 
 
+    //addCourse
+    public function addCourse()
+    {
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["avatar_img" => ''];
+        return $theme->scope('add_course', $data)->render();
+    }
+
+    //addCourse
+
     //addUser
     public function addUser()
     {
@@ -386,6 +465,16 @@ class SuperAdminController extends Controller
         return $theme->scope('add_user', $data)->render();
     }
     //addUser
+
+    //courseList
+    public function courseList()
+    {
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["avatar_img" => ''];
+        return $theme->scope('couserList', $data)->render();
+    }
+    //courseList
 
     public function userList()
     {
@@ -428,6 +517,20 @@ class SuperAdminController extends Controller
 
 
 
+//deleteCouse
+public function deleteCouse(Request $request)
+{
+    $affected = DB::table('course_list')
+        ->where('id', $request->rowid)
+        ->update(['is_deleted' => 1]);
+
+    $data = array(
+        'msg' => 'Deleted Successfully',
+        'status' => 1
+    );
+    return response()->json($data);
+}
+//deleteCouse
 
 
     //deleteUser
@@ -485,6 +588,20 @@ class SuperAdminController extends Controller
         $data = ["data" => $schoolsArr];
         return $theme->scope('view_user', $data)->render();
     }
+    //edit_course
+    public function edit_course($id)
+    {
+        $schoolsArr = DB::table('course_list')
+            ->where('id', $id)
+            ->first();
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["data" => $schoolsArr];
+        return $theme->scope('edit_course', $data)->render();
+    }
+
+    //edit_course
+
 
     public function edit_user($id)
     {
@@ -496,6 +613,51 @@ class SuperAdminController extends Controller
         $data = ["data" => $schoolsArr];
         return $theme->scope('edit_user', $data)->render();
     }
+
+    //getDatatableCourseList
+    public function getDatatableCourseList(Request $request)
+    {
+        $data_arr = array();
+
+        $users_arrArr = DB::table('course_list')->where('is_deleted', 0)->orderBy('id', 'DESC')->get();
+
+
+        $i = 0;
+        foreach ($users_arrArr as $key => $value) {
+            $i++;
+
+            
+            $usersData = DB::table('users')->where('id', $value->created_by)->first();
+
+            //---------------------------------------
+
+            $data_arr[] = array(
+                'RecordID' => $value->id,
+                'IndexID' => $i,               
+                'name' => $value->name,
+                'created_by' =>  $usersData->firstname,
+                'created_at' =>  date('J F Y H:iA',strtotime($value->created_at)),               
+                'status' => $value->status,
+                'Actions' => ''
+
+            );
+        }
+
+        $JSON_Data = json_encode($data_arr);
+        $columnsDefault = [
+            'RecordID'  => true,
+            'IndexID' => true,            
+            'name'      => true,
+            'created_by'      => true,
+            'created_at'      => true,
+            'status'      => true,           
+            'Actions'      => true,
+        ];
+
+        $this->DataGridResponse($JSON_Data, $columnsDefault);
+    }
+
+    //getDatatableCourseList
 
     public function getDatatableUserList(Request $request)
     {

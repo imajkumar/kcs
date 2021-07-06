@@ -329,6 +329,49 @@ $( '#btnPasswordReset' ).click( function ()
 //btnPasswordReset
 
 
+//deleteCouse
+function deleteCouse( rowID )
+{
+  Swal.fire( {
+    title: "Are you sure?",
+    text: "You wont be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  } ).then( function ( result )
+  {
+    if ( result.value )
+    {
+      //ajax
+      $.ajax( {
+        url: BASE_URL + "/deleteCouse",
+        type: "POST",
+        data: {
+          _token: $( 'meta[name="csrf-token"]' ).attr( "content" ),
+          rowid: rowID,
+        },
+        success: function ( resp )
+        {
+          if ( resp.status == 1 )
+          {
+            Swal.fire( "Deleted!", "Your file has been deleted.", "success" );
+            setTimeout( function ()
+            {
+              // window.location.href = BASE_URL+'/orders'
+              location.reload( 1 );
+            }, 500 );
+          } else
+          {
+            Swal.fire( "Deleted Alert!", "Cann't not delete", "error" );
+          }
+        },
+      } );
+      //ajax
+    }
+  } );
+}
+
+//deleteCouse
 
 
 //deleteUser
@@ -853,6 +896,109 @@ function removeImage( action, rowID )
 
 //superadmin
 
+
+//kt_form_add_course_data
+FormValidation.formValidation(
+  document.getElementById( "kt_form_add_course_data" ), {
+  fields: {
+    name: {
+      validators: {
+        notEmpty: {
+          message: "Please First44 Name",
+        },
+      },
+    },
+    
+    
+    
+   
+
+  },
+
+  plugins: {
+    //Learn more: https://formvalidation.io/guide/plugins
+    trigger: new FormValidation.plugins.Trigger(),
+    // Bootstrap Framework Integration
+    bootstrap: new FormValidation.plugins.Bootstrap(),
+    // Validate fields when clicking the Submit button
+    submitButton: new FormValidation.plugins.SubmitButton(),
+    // Submit the form when all fields are valid
+    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+  },
+}
+).on( "core.form.valid", function ()
+{
+  var _redirect = $( "#kt_form_add_course_data" ).attr( "data-redirect" );
+
+  var txtAction =$( "input[name=txtAction]" ).val();
+  if(txtAction=="__edit"){
+  var URLLINK= BASE_URL + "/saveCourseEdit";
+  }else{
+    var URLLINK= BASE_URL + "/saveCourseData";
+  }
+
+  
+
+
+  var formData = {
+    name: $( "input[name=name]" ).val(),
+    txtID: $( "input[name=txtID]" ).val(),
+   
+
+    _token: $( 'meta[name="csrf-token"]' ).attr( "content" ),
+  };
+
+  $.ajax( {
+    url: URLLINK,
+    type: "POST",
+    data: formData,
+    success: function ( res )
+    {
+      if ( res.status == 1 )
+      {
+        swal
+          .fire( {
+            text: res.msg,
+            icon: "success",
+            buttonsStyling: false,
+            confirmButtonText: "Save Successfully!",
+            customClass: {
+              confirmButton: "btn font-weight-bold btn-light-primary",
+            },
+          } )
+          .then( function ()
+          {
+            setTimeout( function ()
+            {
+              //KTUtil.scrollTop();
+              // location.reload();
+              var redirect = BASE_URL + "/" + _redirect;
+              location.assign( redirect );
+            }, 500 );
+          } );
+      } else
+      {
+        swal
+          .fire( {
+            text: res.msg,
+            icon: "error",
+            buttonsStyling: false,
+            confirmButtonText: "Ok, got it!",
+            customClass: {
+              confirmButton: "btn font-weight-bold btn-light-primary",
+            },
+          } )
+          .then( function ()
+          {
+            KTUtil.scrollTop();
+          } );
+      }
+    },
+  } );
+} );
+
+
+//kt_form_add_course_data
 
 // save user edit 
 

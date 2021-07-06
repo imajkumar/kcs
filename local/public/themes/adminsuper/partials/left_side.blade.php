@@ -133,21 +133,21 @@
 										<ul class="menu-subnav">
 											<li class="menu-item menu-item-parent" aria-haspopup="true">
 												<span class="menu-link">
-													<span class="menu-text">Couser</span>
+													<span class="menu-text">Course List</span>
 												</span>
 											</li>
 											<li class="menu-item" aria-haspopup="true">
-												<a href="#" class="menu-link">
+												<a href="{{route('addCourse')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>
-													<span class="menu-text">Add New Couser </span>
+													<span class="menu-text">Add New Course </span>
 													
 												</a>
 											</li>
 					
 											<li class="menu-item" aria-haspopup="true">
-												<a href="{{route('userList')}}" class="menu-link">
+												<a href="{{route('courseList')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>

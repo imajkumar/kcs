@@ -7,10 +7,11 @@
     <meta charset="utf-8" />
     <title>@get('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="BASE_URL" content="{{ url('/') }}" />    
+    <meta name="BASE_URL" content="{{ url('/') }}" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="canonical" href="" />    <!--begin::Fonts-->
+    <link rel="canonical" href="" />
+    <!--begin::Fonts-->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" /> -->
     <!--end::Fonts-->
     <!--begin::Page Vendors Styles(used by this page)-->
@@ -39,12 +40,13 @@
     @partial('top_toolbar')
     @content()
     @partial('footer')
-    
+
 
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="{{getBaseURL()}}/assets/plugins/global/plugins.bundle.js"></script>
     <script src="{{getBaseURL()}}/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="{{getBaseURL()}}/assets/js/scripts.bundle.js"></script>    <!--end::Global Theme Bundle-->
+    <script src="{{getBaseURL()}}/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
     <script src="{{getBaseURL()}}/assets/js/pages/widgets.js"></script>
     <script src="{{getBaseURL()}}/assets/js/pages/crud/forms/widgets/select2.js?v=7.2.7"></script>
     <script type="text/javascript">
@@ -52,17 +54,35 @@
         CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         //	location.reload(1);
     </script>
-    
-    
+
+
     <script src="{{getBaseURL()}}/assets/js/pages/features/miscellaneous/sweetalert2.js?v=7.2.7"></script>
     <script src="{{getBaseURL()}}/assets/plugins/custom/datatables/datatables.bundle.js?v=7.2.7"></script>
     <script src="{{getBaseURL()}}/corex/js/admin_datatable_ajax_x.js?v=7.2.7"></script>
 
-    <script src="{{getBaseURL()}}/corex/js/superadmin_x.js"></script>    
-    
-    <!--end::Page Scripts-->
+    <script src="{{getBaseURL()}}/corex/js/superadmin_x.js"></script>
+    <?php
+    if ( Request::segment(1) == "add-user" || Request::segment(1) == "edit-user") {
+    ?>
+        <script src="{{getBaseURL()}}/corex/js/formsubmit_validated_x.js"></script>
+    <?php
+    }
+    ?>
+
+<?php
+    if (Request::segment(1) == "add-course"  || Request::segment(1) == "edit-course" || Request::segment(1) == "add-course-category" || Request::segment(1) == "edit-course-cat") {
+    ?>
+        <script src="{{getBaseURL()}}/corex/js/formsubmit_validated_x_couser_cat.js"></script>
+    <?php
+    }
+    ?>
+
 
    
+
+    <!--end::Page Scripts-->
+
+
 </body>
 <!--end::Body-->
 

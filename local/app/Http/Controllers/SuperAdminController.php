@@ -159,6 +159,32 @@ class SuperAdminController extends Controller
     }
     //saveCourseData
 
+    //saveCourseCATEdit
+    public function saveCourseCATEdit(Request $request)
+    {
+        $affected = DB::table('coursecat_list')
+        ->where('id', $request->txtID)
+        ->update([
+            'course_id' => $request->course_id,         
+            'name_cat' => $request->name_cat,         
+
+        ]);
+
+        
+
+          
+
+
+                $data = array(
+                    'msg' => 'Submitted Successfully ',
+                    'status' => 1
+                );
+                return response()->json($data);
+            
+    }
+
+    //saveCourseCATEdit
+
     //saveCourseEdit
     public function saveCourseEdit(Request $request)
     {
@@ -185,6 +211,40 @@ class SuperAdminController extends Controller
     }
 
     //saveCourseEdit
+    //saveCourseCATData
+    public function saveCourseCATData(Request $request)
+    {
+        $users = DB::table('coursecat_list')
+        ->where('name_cat', $request->name_cat)
+        ->first();
+        if ($users == null) {
+            DB::table('coursecat_list')->insert([
+                'course_id' => $request->course_id,
+                'name_cat' => $request->name_cat,
+                'created_by' => Auth::user()->id,
+                'created_at' => date('Y-m-d H:i:s'),
+                
+
+            ]);
+            //send email to user
+            $data = array(
+                'msg' => 'Submitted Successfully',
+                'status' => 1
+            );
+            return response()->json($data);
+            
+        }else{
+            $data = array(
+                'msg' => 'Already Added ',
+                'status' => 1
+            );
+            return response()->json($data);
+
+        }
+
+    }
+    //saveCourseCATData
+
 
     public function saveCourseData(Request $request)
     {
@@ -242,6 +302,7 @@ class SuperAdminController extends Controller
                 $dev_role = Role::where('slug', 'user')->first();
                 $dev_perm = Permission::where('slug', 'create-tasks')->first();
                 $developer = new User();
+                $developer->id =getMaxID();
                 $developer->firstname = $request->firstname;
                 $developer->lastname = $request->lastname;
                 $developer->email = $request->email;
@@ -445,6 +506,17 @@ class SuperAdminController extends Controller
 
 
 
+    //addCourseCat
+    public function addCourseCat()
+    {
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["avatar_img" => ''];
+        return $theme->scope('add_courseCat', $data)->render();
+    }
+
+    //addCourseCat
+
     //addCourse
     public function addCourse()
     {
@@ -465,6 +537,17 @@ class SuperAdminController extends Controller
         return $theme->scope('add_user', $data)->render();
     }
     //addUser
+
+    //courseCatList
+    public function courseCatList()
+    {
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["avatar_img" => ''];
+        return $theme->scope('couserCatList', $data)->render();
+    }
+
+    //courseCatList
 
     //courseList
     public function courseList()
@@ -515,6 +598,22 @@ class SuperAdminController extends Controller
 
 
 
+
+    //deleteCouseCat
+    public function deleteCouseCat(Request $request)
+{
+    $affected = DB::table('coursecat_list')
+        ->where('id', $request->rowid)
+        ->update(['is_deleted' => 1]);
+
+    $data = array(
+        'msg' => 'Deleted Successfully',
+        'status' => 1
+    );
+    return response()->json($data);
+}
+
+    //deleteCouseCat
 
 
 //deleteCouse
@@ -588,6 +687,20 @@ public function deleteCouse(Request $request)
         $data = ["data" => $schoolsArr];
         return $theme->scope('view_user', $data)->render();
     }
+    // edit_courseCat
+    public function edit_courseCat($id)
+    {
+        $schoolsArr = DB::table('coursecat_list')
+            ->where('id', $id)
+            ->first();
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["data" => $schoolsArr];
+        return $theme->scope('edit_courseCat', $data)->render();
+    }
+
+    // edit_courseCat
+
     //edit_course
     public function edit_course($id)
     {
@@ -613,6 +726,54 @@ public function deleteCouse(Request $request)
         $data = ["data" => $schoolsArr];
         return $theme->scope('edit_user', $data)->render();
     }
+
+    //getDatatableCourseCatList
+    public function getDatatableCourseCatList(Request $request)
+    {
+        $data_arr = array();
+
+        $users_arrArr = DB::table('coursecat_list')->where('is_deleted', 0)->orderBy('id', 'DESC')->get();
+
+
+        $i = 0;
+        foreach ($users_arrArr as $key => $value) {
+            $i++;
+
+            
+            $usersData = DB::table('course_list')->where('id', $value->course_id)->first();
+            $usersDatauser = DB::table('users')->where('id', $value->created_by)->first();
+
+            //---------------------------------------
+
+            $data_arr[] = array(
+                'RecordID' => $value->id,
+                'IndexID' => $i,               
+                'name' => $usersData->name,
+                'cat_name' => $value->name_cat,
+                'created_by' =>  $usersDatauser->firstname,
+                'created_at' =>  date('J F Y H:iA',strtotime($value->created_at)),               
+                'status' => $value->status,
+                'Actions' => ''
+
+            );
+        }
+
+        $JSON_Data = json_encode($data_arr);
+        $columnsDefault = [
+            'RecordID'  => true,
+            'IndexID' => true,            
+            'name'      => true,
+            'cat_name'      => true,
+            'created_by'      => true,
+            'created_at'      => true,
+            'status'      => true,           
+            'Actions'      => true,
+        ];
+
+        $this->DataGridResponse($JSON_Data, $columnsDefault);
+    }
+
+    //getDatatableCourseCatList
 
     //getDatatableCourseList
     public function getDatatableCourseList(Request $request)

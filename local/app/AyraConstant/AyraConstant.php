@@ -63,7 +63,14 @@ if (!function_exists('NoImage')) {
     }
 }
 
-
+if (!function_exists('getMaxID')) {
+    function getMaxID()
+    {
+        //return Auth::user()->max;
+        $max_id = Auth::max('id') + 1;
+        return $max_id;
+    }
+}
 
 if (!function_exists('user_email')) {
     function user_email()

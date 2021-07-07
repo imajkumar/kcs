@@ -187,7 +187,7 @@
 												</span>
 											</li>
 											<li class="menu-item" aria-haspopup="true">
-												<a href="#" class="menu-link">
+												<a href="{{route('addCourseCat')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>
@@ -197,7 +197,7 @@
 											</li>
 					
 											<li class="menu-item" aria-haspopup="true">
-												<a href="{{route('userList')}}" class="menu-link">
+												<a href="{{route('courseCatList')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>

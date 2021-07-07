@@ -12,6 +12,63 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+    //code 1
+    protected function setSuccessResponse($data = [], $message=NULL, $message_code=NULL, $api_token=NULL, $message_action=NULL)
+    {
+        return response()->json([
+            "data" => $data,
+            "api_token" => $api_token,
+            "log" => '',
+            "code" => 200,
+            "message" => $message,
+            "message_code" => $message_code,
+            "message_action" => $message_action,
+            "status" => 1,
+            'APIVersion' => 1
+        ]);
+    }
+    //code  2
+    protected function setWarningResponse($data = [], $message=NULL, $message_code=NULL, $api_token=NULL, $message_action=NULL)
+    {
+        return response()->json([
+            "data" => '',
+            "api_token" => '',
+            "log" => '',
+            "code" => 200,
+            "message" => $message,
+            "message_code" => $message_code,
+            "message_action" => $message_action,
+            "status" => 0,
+            'APIVersion' => 1
+        ]);
+    }
+    protected function setErrorResponse($message_code = 'ERROR', $message_action=NULL)
+    {
+        $message = "";
+        if (is_array($message_code)) {
+            foreach ($message_code as $msg) {
+                $message = $msg;
+            }
+
+            $message_code = implode(',', $message_code);
+        } else {
+            $message = $message_code;
+        }
+
+        return response()->json([
+            "data" => '', //this will be for data
+            "api_token" => '', //this is hold token after success login
+            "log" => '', //provide log id
+            "code" => 200, //response code
+            "message" => $message,
+            "message_code" => $message_code,
+            "message_action" => $message_action, //if any action requieed then suggest
+            "status" => 0,
+            'APIVersion' => 1
+        ]);
+    }
+    
+
     protected function DataGridResponse($data = [], $columnsDefault = [])
     {
         if ( isset( $_REQUEST['columnsDef'] ) && is_array( $_REQUEST['columnsDef'] ) ) {

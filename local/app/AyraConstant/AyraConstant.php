@@ -67,7 +67,9 @@ if (!function_exists('getMaxID')) {
     function getMaxID()
     {
         //return Auth::user()->max;
-        $max_id = Auth::max('id') + 1;
+        
+        $max_id=DB::table('users')->max('id')+1;
+
         return $max_id;
     }
 }

@@ -54,7 +54,7 @@ var KTFormControls = function () {
               // Validate fields when clicking the Submit button
               submitButton: new FormValidation.plugins.SubmitButton(),
               // Submit the form when all fields are valid
-              //defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+              //defaultSubmit: new FormValidation.plugins.DefaultSubmit(),  dd
             },
           }
           ).on( "core.form.valid", function ()
@@ -65,8 +65,9 @@ var KTFormControls = function () {
             if(txtAction=="__edit"){
             var URLLINK= BASE_URL + "/saveUserData";
             }else{
-              var URLLINK= BASE_URL + "/saveUserEdit";
+              var URLLINK= BASE_URL + "/saveUserData";
             }
+
           
             
           

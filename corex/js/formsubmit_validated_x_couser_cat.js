@@ -1,6 +1,6 @@
 // Class definition
 var KTFormControls = function () {
-	// Private functions
+	// Private functions ddd
 	var _initDemo1 = function () {
 		FormValidation.formValidation(
             document.getElementById( "kt_form_add_user_data" ), {
@@ -65,7 +65,7 @@ var KTFormControls = function () {
             if(txtAction=="__edit"){
             var URLLINK= BASE_URL + "/saveUserData";
             }else{
-              var URLLINK= BASE_URL + "/saveUserEdit";
+              var URLLINK= BASE_URL + "/saveUserData";
             }
           
             
@@ -109,7 +109,7 @@ var KTFormControls = function () {
                         //KTUtil.scrollTop();
                         // location.reload();
                         var redirect = BASE_URL + "/" + _redirect;
-                        location.assign( redirect );
+                       // location.assign( redirect );
                       }, 500 );
                     } );
                 } else

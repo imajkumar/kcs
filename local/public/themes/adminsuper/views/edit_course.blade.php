@@ -18,11 +18,11 @@
                     <div class="col-xl-12 col-xxl-10">
 
                     <?php
-                                    $schoolArr = DB::table('users')->where('id', $data->id)->whereNotNull('avatar')->first();
+                                    $schoolArr = DB::table('course_list')->where('id', $data->id)->first();
     if ($schoolArr == null) {
         $schLogo = NoImage();
     } else {
-        $schLogo = asset('/local/storage/app/doc/') . "/" . $schoolArr->avatar;
+        $schLogo = asset('/local/storage/app/doc/') . "/" . $schoolArr->photo;
     }
 
 

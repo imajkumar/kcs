@@ -803,7 +803,7 @@ public function deleteUserPoint(Request $request)
                 'name' => $usersData->name,
                 'cat_name' => $value->name_cat,
                 'created_by' =>  $usersDatauser->firstname,
-                'created_at' =>  date('J F Y H:iA',strtotime($value->created_at)),               
+                'created_at' =>  date('j F Y H:iA',strtotime($value->created_at)),               
                 'status' => $value->status,
                 'Actions' => ''
 

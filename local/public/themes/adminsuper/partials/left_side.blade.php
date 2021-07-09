@@ -239,7 +239,7 @@
 											
 					
 											<li class="menu-item" aria-haspopup="true">
-												<a href="{{route('userList')}}" class="menu-link">
+												<a href="{{route('courseProgressList')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>

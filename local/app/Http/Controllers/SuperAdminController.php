@@ -559,6 +559,17 @@ class SuperAdminController extends Controller
         return $theme->scope('couserList', $data)->render();
     }
     //courseList
+    //courseProgressList
+    public function courseProgressList()
+    {
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["avatar_img" => ''];
+        return $theme->scope('courseProgressList', $data)->render();
+    }
+
+    //courseProgressList
+
 
     public function userList()
     {
@@ -632,6 +643,21 @@ public function deleteCouse(Request $request)
 }
 //deleteCouse
 
+//deleteUserPoint
+public function deleteUserPoint(Request $request)
+{
+    $affected = DB::table('course_progress')
+        ->where('id', $request->rowid)
+        ->update(['is_deleted' => 1]);
+
+    $data = array(
+        'msg' => 'Deleted Successfully',
+        'status' => 1
+    );
+    return response()->json($data);
+}
+
+//deleteUserPoint
 
     //deleteUser
     public function deleteUser(Request $request)
@@ -870,6 +896,56 @@ public function deleteCouse(Request $request)
 
         $this->DataGridResponse($JSON_Data, $columnsDefault);
     }
+    //getDatatableUserProgressList
+    public function getDatatableUserProgressList(Request $request)
+    {
+        $data_arr = array();
+
+        $users_arrArr = DB::table('course_progress')->where('is_deleted', 0)->orderBy('id', 'DESC')->get();
+
+
+        $i = 0;
+        foreach ($users_arrArr as $key => $value) {
+            $i++;
+
+            $course_listArr = DB::table('course_list')->where('id', $value->course_id)->first();
+            $usersArr = DB::table('users')->where('id', $value->user_id)->first();
+            $created_byArr = DB::table('users')->where('id', $value->created_by)->first();
+
+
+           
+
+            //---------------------------------------
+
+            $data_arr[] = array(
+                'RecordID' => $value->id,
+                'IndexID' => $i,                
+                'name' => $usersArr->firstname." ".$usersArr->lastname,
+                'course' =>  $course_listArr->name,
+                'point' => $value->point,
+                'created_at' => $value->created_at,
+                'created_by' => $created_byArr->firstname,
+                'Actions' => ''
+
+            );
+        }
+
+        $JSON_Data = json_encode($data_arr);
+        $columnsDefault = [
+            'RecordID'  => true,
+            'IndexID' => true,            
+            'name'      => true,
+            'course'      => true,
+            'point'      => true,
+            'created_at'      => true,
+            'created_by'      => true,
+            'Actions'      => true,
+        ];
+
+        $this->DataGridResponse($JSON_Data, $columnsDefault);
+    }
+    //getDatatableUserProgressList
+
 
     
 }

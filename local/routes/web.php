@@ -75,6 +75,10 @@ Route::group(['middleware' => 'role:superadmin'], function() {
    
 
     Route::get('/user-list', [App\Http\Controllers\SuperAdminController::class, 'userList'])->name('userList');
+    Route::get('/course-progress-list', [App\Http\Controllers\SuperAdminController::class, 'courseProgressList'])->name('courseProgressList');
+
+    
+
     Route::get('/course-list', [App\Http\Controllers\SuperAdminController::class, 'courseList'])->name('courseList');
     Route::get('/course-category-list', [App\Http\Controllers\SuperAdminController::class, 'courseCatList'])->name('courseCatList');
 
@@ -180,6 +184,11 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
 
    Route::get('/getDatatableUserList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableUserList'])->name('getDatatableUserList');
+   Route::get('/getDatatableUserProgressList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableUserProgressList'])->name('getDatatableUserList');
+
+   Route::post('/deleteUserPoint', [App\Http\Controllers\SuperAdminController::class, 'deleteUserPoint'])->name('deleteUserPoint');
+
+
    Route::get('/getDatatableCourseList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableCourseList'])->name('getDatatableCourseList');
    Route::get('/getDatatableCourseCatList', [App\Http\Controllers\SuperAdminController::class, 'getDatatableCourseCatList'])->name('getDatatableCourseCatList');
 

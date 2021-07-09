@@ -122,7 +122,10 @@ class AuthController extends Controller
             Auth::loginUsingId($model->id, true);
            
             $accessToken = auth()->user()->createToken('authToken')->accessToken;
-            $data = auth()->user();
+            
+            $userA = auth()->user();
+            $data= $userA->only(['id', 'firstname', 'lastname', 'email','phone','user_position','address','created_at','avatar','base_path']);
+
             $message = strtoupper('SUCCESS-LOGIN');
             $message_action = "Auth:Login-001";
 

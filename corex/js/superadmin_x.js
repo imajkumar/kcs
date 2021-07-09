@@ -416,6 +416,50 @@ function deleteCouse( rowID )
 
 //deleteCouse
 
+//deleteUserPoint
+function deleteUserPoint( rowID )
+{
+  Swal.fire( {
+    title: "Are you sure?",
+    text: "You wont be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  } ).then( function ( result )
+  {
+    if ( result.value )
+    {
+      //ajax
+      $.ajax( {
+        url: BASE_URL + "/deleteUserPoint",
+        type: "POST",
+        data: {
+          _token: $( 'meta[name="csrf-token"]' ).attr( "content" ),
+          rowid: rowID,
+        },
+        success: function ( resp )
+        {
+          if ( resp.status == 1 )
+          {
+            Swal.fire( "Deleted!", "Your file has been deleted.", "success" );
+            setTimeout( function ()
+            {
+              // window.location.href = BASE_URL+'/orders'
+              location.reload( 1 );
+            }, 500 );
+          } else
+          {
+            Swal.fire( "Deleted Alert!", "Cann't not delete", "error" );
+          }
+        },
+      } );
+      //ajax
+    }
+  } );
+}
+
+//deleteUserPoint
+
 
 //deleteUser
 function deleteUser( rowID )

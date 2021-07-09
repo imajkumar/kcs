@@ -130,6 +130,11 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
     Route::post('/deleteSchool', [App\Http\Controllers\SuperAdminController::class, 'deleteSchool'])->name('deleteSchool');
     Route::post('/deleteUser', [App\Http\Controllers\SuperAdminController::class, 'deleteUser'])->name('deleteUser');
+    
+
+
+    
+
     Route::post('/UserResetPassword', [App\Http\Controllers\SuperAdminController::class, 'UserResetPassword'])->name('UserResetPassword');
 
 

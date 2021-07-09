@@ -16,8 +16,7 @@ class AuthController extends Controller
     //getProgress
     public function getProgress(Request $request)
     {
-        $data = DB::table('course_progress')       
-        ->get();
+        
 
         $data = DB::table('course_progress')
             ->join('course_list', 'course_progress.course_id', '=', 'course_list.id')           
@@ -38,6 +37,31 @@ class AuthController extends Controller
     }
 
     //getProgress
+
+    //getSubCategory
+    public function getSubCategory(Request $request)
+    {
+        $data = DB::table('coursecat_list')       
+        ->get();
+
+        $data = DB::table('coursecat_list')
+        ->join('course_list', 'coursecat_list.course_id', '=', 'course_list.id')           
+        ->select('coursecat_list.id','course_list.id as catid', 'coursecat_list.name_cat')
+        ->get();
+
+            $accessToken = '';
+           
+            $message = strtoupper('SUCCESS-CATEGORY');
+            $message_action = "Auth:CATEGORY-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+
+
+
+
+    }
+
+    //getSubCategory
 
     //getCategory
     public function getCategory(Request $request)

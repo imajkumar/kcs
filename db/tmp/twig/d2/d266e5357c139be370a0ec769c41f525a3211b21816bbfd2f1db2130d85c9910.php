@@ -126,6 +126,6 @@ class __TwigTemplate_2e4bef6d6db984c19c9e27f0fb4e55cf513140c0b5ac866119996d3c7f6
 
     public function getSourceContext()
     {
-        return new Source("", "select_lang.twig", "/var/www/lara/db/templates/select_lang.twig");
+        return new Source("", "select_lang.twig", "/var/www/kcs/db/templates/select_lang.twig");
     }
 }

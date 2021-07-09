@@ -50,6 +50,6 @@ class __TwigTemplate_cd95a470c0f7f4fab264208c3c7593e404d73c1e2c9bb281f573d67e415
 
     public function getSourceContext()
     {
-        return new Source("", "config/form_display/tabs_bottom.twig", "/var/www/lara/db/templates/config/form_display/tabs_bottom.twig");
+        return new Source("", "config/form_display/tabs_bottom.twig", "/var/www/kcs/db/templates/config/form_display/tabs_bottom.twig");
     }
 }

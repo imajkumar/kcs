@@ -73,6 +73,6 @@ class __TwigTemplate_151e01149f73a80ba8cd249e85091a09f0e3593726535e27aef72a95a27
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_null.twig", "/var/www/lara/db/templates/columns_definitions/column_null.twig");
+        return new Source("", "columns_definitions/column_null.twig", "/var/www/kcs/db/templates/columns_definitions/column_null.twig");
     }
 }

@@ -190,6 +190,6 @@ class __TwigTemplate_296f8f3dd556bf0c7828738996d60d6b0023fdfb22f0d213ddb50ba7cc8
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/check_all_tables.twig", "/var/www/lara/db/templates/database/structure/check_all_tables.twig");
+        return new Source("", "database/structure/check_all_tables.twig", "/var/www/kcs/db/templates/database/structure/check_all_tables.twig");
     }
 }

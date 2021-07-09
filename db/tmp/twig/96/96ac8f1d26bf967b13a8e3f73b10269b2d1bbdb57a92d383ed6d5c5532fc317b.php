@@ -112,6 +112,6 @@ class __TwigTemplate_cc0159672294c1d6503db6110b9feacdf362e5dd692af7c28b355ee7cad
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/action_row_in_structure_table.twig", "/var/www/lara/db/templates/table/structure/action_row_in_structure_table.twig");
+        return new Source("", "table/structure/action_row_in_structure_table.twig", "/var/www/kcs/db/templates/table/structure/action_row_in_structure_table.twig");
     }
 }

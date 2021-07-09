@@ -88,6 +88,6 @@ class __TwigTemplate_2d5d43d678c3b1b2924dea194dddd8cffc9f563b0d84e181506a6780394
 
     public function getSourceContext()
     {
-        return new Source("", "table/page_with_secondary_tabs.twig", "/var/www/lara/db/templates/table/page_with_secondary_tabs.twig");
+        return new Source("", "table/page_with_secondary_tabs.twig", "/var/www/kcs/db/templates/table/page_with_secondary_tabs.twig");
     }
 }

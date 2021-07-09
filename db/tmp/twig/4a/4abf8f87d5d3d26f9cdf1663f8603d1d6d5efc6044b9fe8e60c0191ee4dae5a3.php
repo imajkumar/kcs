@@ -63,6 +63,6 @@ class __TwigTemplate_1d6f4d5cb35c837226db3cfb712e42f60d4f1d7bd381e6440f75b61661d
 
     public function getSourceContext()
     {
-        return new Source("", "fk_checkbox.twig", "/var/www/lara/db/templates/fk_checkbox.twig");
+        return new Source("", "fk_checkbox.twig", "/var/www/kcs/db/templates/fk_checkbox.twig");
     }
 }

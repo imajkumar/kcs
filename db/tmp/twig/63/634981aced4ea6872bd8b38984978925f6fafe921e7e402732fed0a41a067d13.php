@@ -65,6 +65,6 @@ if (typeof configScriptLoaded !== \"undefined\" && configInlineParams) loadInlin
 
     public function getSourceContext()
     {
-        return new Source("", "javascript/display.twig", "/var/www/lara/db/templates/javascript/display.twig");
+        return new Source("", "javascript/display.twig", "/var/www/kcs/db/templates/javascript/display.twig");
     }
 }

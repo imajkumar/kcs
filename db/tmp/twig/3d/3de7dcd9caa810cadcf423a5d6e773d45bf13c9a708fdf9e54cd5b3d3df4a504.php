@@ -81,6 +81,6 @@ class __TwigTemplate_3fd530bbdf98aacbef5152219d63d98c500514d2562d0be530341e7f0f3
 
     public function getSourceContext()
     {
-        return new Source("", "select_all.twig", "/var/www/lara/db/templates/select_all.twig");
+        return new Source("", "select_all.twig", "/var/www/kcs/db/templates/select_all.twig");
     }
 }

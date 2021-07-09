@@ -71,6 +71,6 @@ class __TwigTemplate_514b9e5a1e6fe73cafb39fdbb2a2357fbdf3b805a71266e38efae6585c2
 
     public function getSourceContext()
     {
-        return new Source("", "filter.twig", "/var/www/lara/db/templates/filter.twig");
+        return new Source("", "filter.twig", "/var/www/kcs/db/templates/filter.twig");
     }
 }

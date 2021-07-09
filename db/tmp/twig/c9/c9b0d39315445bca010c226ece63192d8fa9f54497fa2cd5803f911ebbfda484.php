@@ -82,6 +82,6 @@ class __TwigTemplate_1f32a0b8e9dbfec1d0b14a244fb443d5cf7eb948d3f49b10360e8763439
 
     public function getSourceContext()
     {
-        return new Source("", "checkbox.twig", "/var/www/lara/db/templates/checkbox.twig");
+        return new Source("", "checkbox.twig", "/var/www/kcs/db/templates/checkbox.twig");
     }
 }

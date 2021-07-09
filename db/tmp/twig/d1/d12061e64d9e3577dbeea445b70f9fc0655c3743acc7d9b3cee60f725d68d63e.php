@@ -99,6 +99,6 @@ class __TwigTemplate_258bee71fab5c6ea0d3ac1518c955ebdb84b09291b852aa8870edd2a740
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/move_column.twig", "/var/www/lara/db/templates/columns_definitions/move_column.twig");
+        return new Source("", "columns_definitions/move_column.twig", "/var/www/kcs/db/templates/columns_definitions/move_column.twig");
     }
 }

@@ -88,6 +88,6 @@ class __TwigTemplate_d7994666f677dae79bab9f99ea157653676c3d1022df290979b07d4bbeb
 
     public function getSourceContext()
     {
-        return new Source("", "console/toolbar.twig", "/var/www/lara/db/templates/console/toolbar.twig");
+        return new Source("", "console/toolbar.twig", "/var/www/kcs/db/templates/console/toolbar.twig");
     }
 }

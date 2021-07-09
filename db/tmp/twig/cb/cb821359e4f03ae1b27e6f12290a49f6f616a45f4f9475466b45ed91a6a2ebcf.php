@@ -274,6 +274,6 @@ class __TwigTemplate_e0a3a83d50dc4f82a45f564c2612ca03130c847eb0275fec494771ca49b
 
     public function getSourceContext()
     {
-        return new Source("", "navigation/main.twig", "/var/www/lara/db/templates/navigation/main.twig");
+        return new Source("", "navigation/main.twig", "/var/www/kcs/db/templates/navigation/main.twig");
     }
 }

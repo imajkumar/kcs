@@ -466,6 +466,6 @@ class __TwigTemplate_23152a764cde218384a2153ad95b189fbf171bd12dfed17e2e05fc18bc0
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/display_table_stats.twig", "/var/www/lara/db/templates/table/structure/display_table_stats.twig");
+        return new Source("", "table/structure/display_table_stats.twig", "/var/www/kcs/db/templates/table/structure/display_table_stats.twig");
     }
 }

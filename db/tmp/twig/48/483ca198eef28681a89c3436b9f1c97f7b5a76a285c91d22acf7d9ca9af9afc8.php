@@ -78,6 +78,6 @@ class __TwigTemplate_253c9e3cb3ac459188e9a3e163fd02bb49632143ebe9fcd1e4c0c414f69
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/comment_for_row.twig", "/var/www/lara/db/templates/display/results/comment_for_row.twig");
+        return new Source("", "display/results/comment_for_row.twig", "/var/www/kcs/db/templates/display/results/comment_for_row.twig");
     }
 }

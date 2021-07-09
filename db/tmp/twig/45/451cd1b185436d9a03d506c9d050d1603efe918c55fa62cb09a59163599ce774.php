@@ -77,6 +77,6 @@ class __TwigTemplate_29ddc02902bf70af4a2825ae8c05fd9f96a65350c89c227657e7bb6e746
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_type.twig", "/var/www/lara/db/templates/columns_definitions/column_type.twig");
+        return new Source("", "columns_definitions/column_type.twig", "/var/www/kcs/db/templates/columns_definitions/column_type.twig");
     }
 }

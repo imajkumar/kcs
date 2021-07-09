@@ -75,6 +75,6 @@ class __TwigTemplate_3f1e0fb921840608eb0e430b7fa5bbd98314018d403421d7cfa676ed725
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/favorite_anchor.twig", "/var/www/lara/db/templates/database/structure/favorite_anchor.twig");
+        return new Source("", "database/structure/favorite_anchor.twig", "/var/www/kcs/db/templates/database/structure/favorite_anchor.twig");
     }
 }

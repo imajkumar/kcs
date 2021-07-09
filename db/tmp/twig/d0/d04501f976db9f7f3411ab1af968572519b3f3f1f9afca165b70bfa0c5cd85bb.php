@@ -448,6 +448,6 @@ class __TwigTemplate_1ed961535efdafce848132577f6f1b0a40764a9ae47f6b4a2f3fb10ba4c
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_attributes.twig", "/var/www/lara/db/templates/columns_definitions/column_attributes.twig");
+        return new Source("", "columns_definitions/column_attributes.twig", "/var/www/kcs/db/templates/columns_definitions/column_attributes.twig");
     }
 }

@@ -108,6 +108,6 @@ class __TwigTemplate_7265e65c08bb4895a667a71689e7fa4f99fb54433b17245b4bca34e0807
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/index.twig", "/var/www/lara/db/templates/database/structure/index.twig");
+        return new Source("", "database/structure/index.twig", "/var/www/kcs/db/templates/database/structure/index.twig");
     }
 }

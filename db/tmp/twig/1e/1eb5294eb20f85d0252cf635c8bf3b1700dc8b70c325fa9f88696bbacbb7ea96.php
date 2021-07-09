@@ -123,6 +123,6 @@ class __TwigTemplate_13a303da6b85554e0e9d15baeda7a0dd64b5f80732f69e0a5dac6bffad8
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_indexes.twig", "/var/www/lara/db/templates/columns_definitions/column_indexes.twig");
+        return new Source("", "columns_definitions/column_indexes.twig", "/var/www/kcs/db/templates/columns_definitions/column_indexes.twig");
     }
 }

@@ -110,6 +110,6 @@ class __TwigTemplate_1cc0fdee22b06574076fcc27d7bc453ad3c9af373b2bad6f7545ad2438d
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/table_headers.twig", "/var/www/lara/db/templates/display/results/table_headers.twig");
+        return new Source("", "display/results/table_headers.twig", "/var/www/kcs/db/templates/display/results/table_headers.twig");
     }
 }

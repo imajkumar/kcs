@@ -76,6 +76,6 @@ class __TwigTemplate_2ac38213f50617508e2999f0fa73a70b5bfd29ad7e21ec785e48189ab78
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/data_for_resetting_column_order.twig", "/var/www/lara/db/templates/display/results/data_for_resetting_column_order.twig");
+        return new Source("", "display/results/data_for_resetting_column_order.twig", "/var/www/kcs/db/templates/display/results/data_for_resetting_column_order.twig");
     }
 }

@@ -169,6 +169,6 @@ class __TwigTemplate_064339a27a07e228e1d9a81ff2902c5f43d7262971f03088f0cb6a08f25
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/options_block.twig", "/var/www/lara/db/templates/display/results/options_block.twig");
+        return new Source("", "display/results/options_block.twig", "/var/www/kcs/db/templates/display/results/options_block.twig");
     }
 }

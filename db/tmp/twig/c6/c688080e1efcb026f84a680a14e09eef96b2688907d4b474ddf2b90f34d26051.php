@@ -232,6 +232,6 @@ class __TwigTemplate_4c9e520258c6e7fea3ce7aaf8adea5d3db668821975686a57ab9bc91f29
 
     public function getSourceContext()
     {
-        return new Source("", "header.twig", "/var/www/lara/db/templates/header.twig");
+        return new Source("", "header.twig", "/var/www/kcs/db/templates/header.twig");
     }
 }

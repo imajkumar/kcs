@@ -90,6 +90,6 @@ class __TwigTemplate_e3bded491ece0ea85517b18fb04d89fcf19ff36061df951412e1d9c2a4e
 
     public function getSourceContext()
     {
-        return new Source("", "login/header.twig", "/var/www/lara/db/templates/login/header.twig");
+        return new Source("", "login/header.twig", "/var/www/kcs/db/templates/login/header.twig");
     }
 }

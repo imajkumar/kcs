@@ -95,6 +95,6 @@ class __TwigTemplate_1f41353a31fd7d76536c9cc4d80f5ae63d2688430f25506ba37c49ca3e3
 
     public function getSourceContext()
     {
-        return new Source("", "database/create_table.twig", "/var/www/lara/db/templates/database/create_table.twig");
+        return new Source("", "database/create_table.twig", "/var/www/kcs/db/templates/database/create_table.twig");
     }
 }

@@ -125,6 +125,6 @@ class __TwigTemplate_6fa6a678697dc6f7e17d508f478428e714f39dbb97659cae7bdabc25cf1
 
     public function getSourceContext()
     {
-        return new Source("", "scripts.twig", "/var/www/lara/db/templates/scripts.twig");
+        return new Source("", "scripts.twig", "/var/www/kcs/db/templates/scripts.twig");
     }
 }

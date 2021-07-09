@@ -104,6 +104,6 @@ class __TwigTemplate_91bf2f7b9035c44ea764dd3487f7ae8a8c437c13fbda604ca205b0f6f87
 
     public function getSourceContext()
     {
-        return new Source("", "footer.twig", "/var/www/lara/db/templates/footer.twig");
+        return new Source("", "footer.twig", "/var/www/kcs/db/templates/footer.twig");
     }
 }

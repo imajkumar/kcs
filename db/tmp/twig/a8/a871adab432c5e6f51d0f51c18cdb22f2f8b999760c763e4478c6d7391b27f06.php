@@ -72,6 +72,6 @@ class __TwigTemplate_845e97a2ad025924c1f126fb2c8dc70aaf91f0e88d4f059d65f1d89c14c
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_auto_increment.twig", "/var/www/lara/db/templates/columns_definitions/column_auto_increment.twig");
+        return new Source("", "columns_definitions/column_auto_increment.twig", "/var/www/kcs/db/templates/columns_definitions/column_auto_increment.twig");
     }
 }

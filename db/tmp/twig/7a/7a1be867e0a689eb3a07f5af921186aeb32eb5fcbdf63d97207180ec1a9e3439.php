@@ -303,6 +303,6 @@ class __TwigTemplate_64683192890b25ff3a890c8caa8c831cd7c0fa9fff70e056736f1b30c7b
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/table_fields_definitions.twig", "/var/www/lara/db/templates/columns_definitions/table_fields_definitions.twig");
+        return new Source("", "columns_definitions/table_fields_definitions.twig", "/var/www/kcs/db/templates/columns_definitions/table_fields_definitions.twig");
     }
 }

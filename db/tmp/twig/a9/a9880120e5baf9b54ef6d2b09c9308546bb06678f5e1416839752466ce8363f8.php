@@ -83,6 +83,6 @@ class __TwigTemplate_98e3b98e790aeddb20a698dfda1730f9fe944ab3cee57b07d710e0fa626
 
     public function getSourceContext()
     {
-        return new Source("", "navigation/tree/state.twig", "/var/www/lara/db/templates/navigation/tree/state.twig");
+        return new Source("", "navigation/tree/state.twig", "/var/www/kcs/db/templates/navigation/tree/state.twig");
     }
 }

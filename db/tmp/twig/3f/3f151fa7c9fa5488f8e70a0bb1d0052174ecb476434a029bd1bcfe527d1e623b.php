@@ -86,6 +86,6 @@ class __TwigTemplate_d506898cae96e316b986063706475823bac1eb103b6b6def3456540640a
 
     public function getSourceContext()
     {
-        return new Source("", "sql/sql_query_results.twig", "/var/www/lara/db/templates/sql/sql_query_results.twig");
+        return new Source("", "sql/sql_query_results.twig", "/var/www/kcs/db/templates/sql/sql_query_results.twig");
     }
 }

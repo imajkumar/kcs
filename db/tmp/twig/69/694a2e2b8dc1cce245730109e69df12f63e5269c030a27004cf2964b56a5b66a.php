@@ -89,6 +89,6 @@ class __TwigTemplate_2797e520f71712126a9753cc8bc45725f6fcecece660647665a2f52f045
 
     public function getSourceContext()
     {
-        return new Source("", "div_for_slider_effect.twig", "/var/www/lara/db/templates/div_for_slider_effect.twig");
+        return new Source("", "div_for_slider_effect.twig", "/var/www/kcs/db/templates/div_for_slider_effect.twig");
     }
 }

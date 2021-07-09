@@ -67,6 +67,6 @@ class __TwigTemplate_46f21df616d96f379fcbb01edb0546d2081c830e87412a329f8ffefb3f8
 
     public function getSourceContext()
     {
-        return new Source("", "config/form_display/group_header.twig", "/var/www/lara/db/templates/config/form_display/group_header.twig");
+        return new Source("", "config/form_display/group_header.twig", "/var/www/kcs/db/templates/config/form_display/group_header.twig");
     }
 }

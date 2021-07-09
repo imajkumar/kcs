@@ -72,6 +72,6 @@ class __TwigTemplate_1907edb1313499ce09501ceeaeda993af305ce45612ef7879d93f47c0e3
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/null_display.twig", "/var/www/lara/db/templates/display/results/null_display.twig");
+        return new Source("", "display/results/null_display.twig", "/var/www/kcs/db/templates/display/results/null_display.twig");
     }
 }

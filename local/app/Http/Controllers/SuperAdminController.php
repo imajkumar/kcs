@@ -311,6 +311,17 @@ class SuperAdminController extends Controller
 
     //saveCourseData
 
+    public function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+
     //saveUserData
     public function saveUserData(Request $request)
     {
@@ -323,6 +334,7 @@ class SuperAdminController extends Controller
             $users = DB::table('users')
                 ->where('email', $request->email)
                 ->first();
+            $passRnd=$this->randomPassword();
 
             if ($users == null) {
                 $dev_role = Role::where('slug', 'user')->first();
@@ -336,7 +348,7 @@ class SuperAdminController extends Controller
                 $developer->user_type = 3;
                 $developer->gender = $request->gender;
                 $developer->user_position = $request->user_position;
-                $developer->password = bcrypt('123456');
+                $developer->password = bcrypt('passRnd');
                 $developer->save();
                 $developer->roles()->attach($dev_role);
                 $developer->permissions()->attach($dev_perm);

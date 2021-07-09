@@ -158,8 +158,7 @@
 						<th>Photo</th>
 						<th>Name</th>
 						<th>Email</th>
-						<th>Contact</th>
-						<th>Gender</th>
+						<th>Contact</th>						
 						<th>Status</th>
 						<th>Actions</th>
 					</tr>

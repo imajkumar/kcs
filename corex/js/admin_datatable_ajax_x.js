@@ -2348,8 +2348,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
             "photo",
             "name",
             "email",
-            "phone",
-            "gender",
+            "phone",           
             "status",
             "Actions",
           ],
@@ -2361,8 +2360,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
         { data: "photo" },
         { data: "name" },
         { data: "email" },
-        { data: "phone" },
-        { data: "gender" },
+        { data: "phone" },       
         { data: "status" },
         { data: "Actions", responsivePriority: -1 },
       ],
@@ -2404,38 +2402,9 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
           </div>`;
           },
         },
+      
         {
           targets: 6,
-          width: 50,
-          title: "Gender",
-          orderable: false,
-          render: function (a, t, e, n) {
-            var i = {
-              1: {
-                title: "Male",
-                class: "primary",
-              },
-              2: {
-                title: "Female",
-                class: "primary",
-              },
-              3: {
-                title: "Other",
-                class: "primary",
-              },
-            };
-            //return void 0 === i[a] ? a : '<span class="m-badge ' + i[a].class + ' m-badge--wide">' + i[a].title + "</span>"
-            return (
-              '<span class="font-weight-bold text-' +
-              i[a].class +
-              '">' +
-              i[a].title +
-              "</span>"
-            );
-          },
-        },
-        {
-          targets: 7,
           width: 50,
           title: "Status",
           orderable: false,

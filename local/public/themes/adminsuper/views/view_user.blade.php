@@ -70,12 +70,7 @@
 														<span class="form-control-plaintext font-weight-bolder">{{$data->email}}</span>
 													</div>
 												</div>
-                                                <div class="form-group row my-2">
-													<label class="col-4 col-form-label">Gender:</label>
-													<div class="col-8">
-														<span class="form-control-plaintext font-weight-bolder">{{$data->email}}</span>
-													</div>
-												</div>
+                                               
 												
 												<div class="form-group row my-2">
 													<label class="col-4 col-form-label">Postion:</label>

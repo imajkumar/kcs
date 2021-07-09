@@ -77,21 +77,7 @@
                                         </div>
                                         <!--end::Group-->
                                         <!--begin::Group-->
-                                        <div class="form-group row fv-plugins-icon-container">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Gender</label>
-                                            <div class="col-lg-9 col-xl-9">
-                                                <div class="input-group input-group-solid input-group-lg">
-                                                    <select name="gender" id="" class="form-control form-control-solid form-control-lg">
-                                                    <option value="1">Male</option>
-                                                    <option value="2">Female</option>
-                                                    <option value="3">Other</option>
-                                                    </select>
-                                                    
-                                                </div>
-                                                <div class="fv-plugins-message-container"></div>
-                                            </div>
-                                        </div>
-                                        <!--end::Group-->
+                                        
 
                                         <!--begin::Group-->
                                         <div class="form-group row fv-plugins-icon-container">

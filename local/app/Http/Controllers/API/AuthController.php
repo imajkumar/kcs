@@ -9,9 +9,30 @@ use Validator;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use DB;
 class AuthController extends Controller
 {
     
+    //getCategory
+    public function getCategory(Request $request)
+    {
+        $data = DB::table('course_list')       
+        ->get();
+            $accessToken = '';
+           
+            $message = strtoupper('SUCCESS-CATEGORY');
+            $message_action = "Auth:CATEGORY-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+
+
+
+
+    }
+    //getCategory
+
+
+
     //getProfile
     public function getProfile(Request $request)
     {

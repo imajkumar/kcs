@@ -28,7 +28,7 @@
                         <div class="mr-3">
                             <div class="d-flex align-items-center mr-3">
                                 <!--begin::Name-->
-                                <a href="javascript:;" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{$data->name}}</a>
+                                <a href="javascript:;" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{$data->firstname}}</a>
                                 <i class="flaticon2-correct text-success icon-md ml-2"></i>
                                 <a href="#" class="font-weight-bolder font-size-h5 text-success-75 text-hover-success">Active</a>
                                 <!--end::Name-->
@@ -58,7 +58,7 @@
                                         <!--end::Svg Icon-->
                                     </span>{{@$data->phone}}</a>
                                     @endif
-                                    @if(isset(Auth::user()->location_address))
+                                    @if(isset(Auth::user()->address))
                                 <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                     <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                         <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Map/Marker2.svg-->
@@ -69,7 +69,7 @@
                                             </g>
                                         </svg>
                                         <!--end::Svg Icon-->
-                                    </span>{{$data->location_address}}</a>
+                                    </span>{{$data->address}}</a>
                                     @endif
                             </div>
                             <!--end::Contacts-->

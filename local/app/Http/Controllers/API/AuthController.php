@@ -13,6 +13,33 @@ use DB;
 class AuthController extends Controller
 {
     
+    //getProgressByEmpID
+    public function getProgressByEmpID(Request $request)
+    {
+        $emp_id=$request->emp_id;
+
+        $data = DB::table('course_progress')
+            ->join('course_list', 'course_progress.course_id', '=', 'course_list.id')           
+            ->where('course_progress.user_id',$emp_id)
+
+            ->select('course_list.name', 'course_list.photo', 'course_list.base_path','course_progress.point','course_progress.id')
+            ->get();
+
+
+            $accessToken = '';
+           
+            $message = strtoupper('SUCCESS-CATEGORY');
+            $message_action = "Auth:CATEGORY-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+
+
+
+
+    }
+
+    //getSubCategoryByCateID
+
     //getSubCategoryByCateID
     public function getSubCategoryByCateID(Request $request)
     {

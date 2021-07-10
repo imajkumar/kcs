@@ -117,6 +117,28 @@ class SuperAdminController extends Controller
                 'status' => 1
             );
         }
+        if($request->action==3){
+           
+            if ($request->hasFile('file')) {
+                $file = $request->file('file');
+                $filename = $request->txtSID . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
+                // save to local/public/uploads/photo/ as the new $filename
+                //var/www/larachat/local/public/storage/users-avatar
+                $path = $file->storeAs('doc', $filename);
+        
+        
+                $affected = DB::table('coursecat_list')
+                    ->where('id', $request->txtSID,)
+                    ->update([
+                        'photo' => $filename,
+                        'base_path' => getBaseURL()."/local/storage/app/doc/",
+                        ]);
+            }
+            $data = array(
+                'msg' => 'Uploaded Successfully',
+                'status' => 1
+            );
+        }
 
    
       return response()->json($data);
@@ -817,6 +839,8 @@ public function deleteUserPoint(Request $request)
                 'created_by' =>  $usersDatauser->firstname,
                 'created_at' =>  date('j F Y H:iA',strtotime($value->created_at)),               
                 'status' => $value->status,
+                'photo' => $value->photo,
+                'base_path' => $value->base_path,
                 'Actions' => ''
 
             );
@@ -831,6 +855,8 @@ public function deleteUserPoint(Request $request)
             'created_by'      => true,
             'created_at'      => true,
             'status'      => true,           
+            'photo'      => true,           
+            'base_path'      => true,           
             'Actions'      => true,
         ];
 
@@ -863,6 +889,8 @@ public function deleteUserPoint(Request $request)
                 'created_by' =>  $usersData->firstname,
                 'created_at' =>  date('J F Y H:iA',strtotime($value->created_at)),               
                 'status' => $value->status,
+                'photo' => $value->photo,
+                'base_path' => $value->base_path,
                 'Actions' => ''
 
             );
@@ -876,6 +904,8 @@ public function deleteUserPoint(Request $request)
             'created_by'      => true,
             'created_at'      => true,
             'status'      => true,           
+            'photo'      => true,           
+            'base_path'      => true,           
             'Actions'      => true,
         ];
 

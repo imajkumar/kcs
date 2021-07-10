@@ -27,7 +27,7 @@ Route::post('getProfile', [AuthController::class, 'getProfile']);
 Route::get('getCategory', [AuthController::class, 'getCategory']);
 Route::get('getSubCategory', [AuthController::class, 'getSubCategory']);
 Route::get('getProgress', [AuthController::class, 'getProgress']);
-
+Route::post('getSubCategoryByCateID', [AuthController::class, 'getSubCategoryByCateID']);
 
 Route::fallback(function(){
     return response()->json([

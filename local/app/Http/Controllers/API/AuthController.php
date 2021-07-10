@@ -13,6 +13,34 @@ use DB;
 class AuthController extends Controller
 {
     
+    //getSubCategoryByCateID
+    public function getSubCategoryByCateID(Request $request)
+    {
+        $course_id=$request->cat_id;
+        $data = DB::table('coursecat_list')       
+        ->get();
+
+        $data = DB::table('coursecat_list')
+        ->rightJoin('course_list', 'coursecat_list.course_id', '=', 'course_list.id')           
+        ->where('coursecat_list.is_deleted',0)
+        ->where('coursecat_list.course_id',$course_id)
+        ->select('coursecat_list.id','course_list.id as catid', 'coursecat_list.name_cat','coursecat_list.photo','coursecat_list.base_path')
+        ->get();
+
+            $accessToken = '';
+           
+            $message = strtoupper('SUCCESS-CATEGORY');
+            $message_action = "Auth:CATEGORY-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+
+
+
+
+    }
+
+    //getSubCategoryByCateID
+
     //getProgress
     public function getProgress(Request $request)
     {
@@ -45,8 +73,9 @@ class AuthController extends Controller
         ->get();
 
         $data = DB::table('coursecat_list')
-        ->join('course_list', 'coursecat_list.course_id', '=', 'course_list.id')           
-        ->select('coursecat_list.id','course_list.id as catid', 'coursecat_list.name_cat')
+        ->rightJoin('course_list', 'coursecat_list.course_id', '=', 'course_list.id')           
+        ->where('coursecat_list.is_deleted',0)
+        ->select('coursecat_list.id','course_list.id as catid', 'coursecat_list.name_cat','coursecat_list.photo','coursecat_list.base_path')
         ->get();
 
             $accessToken = '';
@@ -66,7 +95,7 @@ class AuthController extends Controller
     //getCategory
     public function getCategory(Request $request)
     {
-        $data = DB::table('course_list')       
+        $data = DB::table('course_list')->where('is_deleted',0)       
         ->get();
             $accessToken = '';
            

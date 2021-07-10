@@ -2513,6 +2513,8 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
             "created_by",
             "created_at",           
             "status",
+            "photo",
+            "base_path",
             "Actions",
           ],
         },
@@ -2521,6 +2523,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
         { data: "RecordID" },
         { data: "IndexID" },
         { data: "name" },
+        { data: "photo" },
         { data: "created_by" },
         { data: "created_at" },
         { data: "status" },       
@@ -2552,10 +2555,21 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
 						`;
           },
         },
-        
+        {
+          targets: 3,
+          width: 50,
+          title: "Image",
+          orderable: false,
+          render: function (a, t, e, n) {
+            var imgURL=e.base_path+"/"+e.photo;
+          return ` <img src="${imgURL}" alt="" width="45px">
+          </div>`
+          }
+        },
+       
        
         {
-          targets: 5,
+          targets: 6,
           width: 50,
           title: "Status",
           orderable: false,
@@ -2661,6 +2675,8 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
             "RecordID",
             "IndexID",          
             "name",
+            "photo",
+            "base_path",
             "cat_name",
             "created_by",
             "created_at",           
@@ -2673,6 +2689,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
         { data: "RecordID" },
         { data: "IndexID" },
         { data: "name" },
+        { data: "photo" },
         { data: "cat_name" },
         { data: "created_by" },
         { data: "created_at" },
@@ -2705,10 +2722,20 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
 						`;
           },
         },
-        
+        {
+          targets: 2,
+          width: 50,
+          title: "Image",
+          orderable: false,
+          render: function (a, t, e, n) {
+            var imgURL=e.base_path+"/"+e.photo;
+          return ` <img src="${imgURL}" alt="" width="45px">
+          </div>`
+          }
+        },
        
         {
-          targets: 6,
+          targets: 7,
           width: 50,
           title: "Status",
           orderable: false,

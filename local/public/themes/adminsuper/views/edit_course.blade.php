@@ -8,7 +8,7 @@
                 <span class="card-icon">
                     <i class="flaticon2-supermarket text-primary"></i>
                 </span>
-                <h3 class="card-label">Add New Couse</h3>
+                <h3 class="card-label">Edit New Couse</h3>
             </div>
 
         </div>

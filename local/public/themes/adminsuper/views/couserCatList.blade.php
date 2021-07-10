@@ -155,6 +155,7 @@
 					<tr>
 						<th>Record ID</th>
 						<th>S#</th>
+						<th>Image</th>
 						<th>Couse Name</th>
 						<th>Sub Category</th>
 						<th>Create By </th>

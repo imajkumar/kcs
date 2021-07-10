@@ -90,6 +90,16 @@
                                                 <div class="fv-plugins-message-container"></div>
                                             </div>
                                         </div>
+                                        <div class="form-group row fv-plugins-icon-container">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
+                                            <div class="col-lg-9 col-xl-9">
+                                                <div class="input-group input-group-solid input-group-lg">
+                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="user_address" placeholder="" value="">
+                                                    
+                                                </div>
+                                                <div class="fv-plugins-message-container"></div>
+                                            </div>
+                                        </div>
                                         <!--end::Group-->
 
                                     </div>

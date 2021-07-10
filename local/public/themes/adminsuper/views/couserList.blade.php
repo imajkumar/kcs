@@ -154,9 +154,9 @@
 				<thead>
 					<tr>
 						<th>Record ID</th>
-						<th>S#</th>
-						<th>Image</th>
+						<th>S#</th>						
 						<th>Couse Name</th>
+						<th>Image</th>
 						<th>Create By </th>
 						<th>Created on</th>						
 						<th>Status</th>						

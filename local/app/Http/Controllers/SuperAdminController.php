@@ -370,6 +370,7 @@ class SuperAdminController extends Controller
                 $developer->user_type = 3;
                 $developer->gender = $request->gender;
                 $developer->user_position = $request->user_position;
+                $developer->address = $request->user_address;
                 $developer->password = bcrypt('passRnd');
                 $developer->save();
                 $developer->roles()->attach($dev_role);
@@ -423,6 +424,7 @@ class SuperAdminController extends Controller
                 'phone' => $request->phone,
                 'gender' => $request->gender,
                 'user_position' => $request->user_position,
+                'address' => $request->user_address,
 
             ]);
 

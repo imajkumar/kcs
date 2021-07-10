@@ -78,6 +78,7 @@ var KTFormControls = function () {
               lastname: $( "input[name=lastname]" ).val(),
               phone: $( "input[name=phone]" ).val(),
               email: $( "input[name=email]" ).val(),
+              user_address: $( "input[name=user_address]" ).val(),
               user_position: $( "input[name=user_position]" ).val(),
               gender: $('select[name="gender"]').val(),
               user_position: $( "input[name=user_position]" ).val(),

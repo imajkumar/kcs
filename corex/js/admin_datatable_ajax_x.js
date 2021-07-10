@@ -2723,7 +2723,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
           },
         },
         {
-          targets: 2,
+          targets: 3,
           width: 50,
           title: "Image",
           orderable: false,

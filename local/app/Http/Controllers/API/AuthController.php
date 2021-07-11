@@ -18,8 +18,15 @@ class AuthController extends Controller
     {
         $user_id=$request->emp_id;
 
-        $data = DB::table('course_list')->where('user_id',$user_id)->where('is_deleted',0)       
+        $dataCat = DB::table('course_list')->where('user_id',$user_id)->where('is_deleted',0)       
         ->get();
+        $dataPoint = DB::table('course_progress')->where('user_id',$user_id)->where('is_deleted',0)       
+        ->get();
+        $data=array(
+            'category'=>$dataCat,
+            'points'=>$dataPoint,
+        );
+
             $accessToken = '';
            
             $message = strtoupper('SUCCESS-CATEGORY');

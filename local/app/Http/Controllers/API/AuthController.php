@@ -13,6 +13,27 @@ use DB;
 class AuthController extends Controller
 {
     
+    //getCategoryByEmpID
+    public function getCategoryByEmpID(Request $request)
+    {
+        $user_id=$request->emp_id;
+
+        $data = DB::table('course_list')->where('user_id',$user_id)->where('is_deleted',0)       
+        ->get();
+            $accessToken = '';
+           
+            $message = strtoupper('SUCCESS-CATEGORY');
+            $message_action = "Auth:CATEGORY-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+
+
+
+
+    }
+
+    //getCategoryByEmpID
+
     //getProgressByEmpID
     public function getProgressByEmpID(Request $request)
     {

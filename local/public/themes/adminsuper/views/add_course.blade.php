@@ -32,6 +32,14 @@
                                                 <div class="fv-plugins-message-container"></div>
                                             </div>
                                         </div>
+
+                                        <div class="form-group row fv-plugins-icon-container">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Course Description</label>
+                                            <div class="col-lg-9 col-xl-9">
+                                                <input class="form-control form-control-solid form-control-lg" name="couser_info" type="text" value="">
+                                                <div class="fv-plugins-message-container"></div>
+                                            </div>
+                                        </div>
                                         <!--end::Group-->
                                         
                                       

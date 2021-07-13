@@ -2895,6 +2895,8 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
               grid: false,
               min: 0,
               max: 100,
+              to_fixed:true,//block the top
+              from_fixed:true,
               from: 0,
               to: full.point,
               prefix: "Point:"

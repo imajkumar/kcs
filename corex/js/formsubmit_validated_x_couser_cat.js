@@ -302,6 +302,7 @@ var KTFormControls = function () {
           
             var formData = {
               name: $( "input[name=name]" ).val(),
+              couser_info: $( "input[name=couser_info]" ).val(),
               txtID: $( "input[name=txtID]" ).val(),
              
           

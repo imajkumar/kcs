@@ -241,6 +241,7 @@ class SuperAdminController extends Controller
         ->where('id', $request->txtID)
         ->update([
             'name' => $request->name,         
+            'couser_info' => $request->couser_info,         
 
         ]);
 
@@ -312,7 +313,7 @@ class SuperAdminController extends Controller
                     'name' => $request->name,
                     'created_by' => Auth::user()->id,
                     'created_at' => date('Y-m-d H:i:s'),
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'couser_info' => $request->couser_info,
     
                 ]);
                 //send email to user

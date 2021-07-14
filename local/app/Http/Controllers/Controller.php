@@ -31,7 +31,7 @@ class Controller extends BaseController
     protected function setWarningResponse($data = [], $message=NULL, $message_code=NULL, $api_token=NULL, $message_action=NULL)
     {
         return response()->json([
-            "data" => '',
+            "data" =>$data,
             "api_token" => '',
             "log" => '',
             "code" => 200,

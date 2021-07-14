@@ -37,6 +37,8 @@ Route::post('getProgressByEmpID', [AuthController::class, 'getProgressByEmpID'])
 Route::post('getCategoryByEmpID', [AuthController::class, 'getCategoryByEmpID']);
 Route::post('getSubCategoryByCateID', [AuthController::class, 'getSubCategoryByCateID']);
 Route::post('getSubCategoryByEmpID', [AuthController::class, 'getSubCategoryByEmpID']);
+Route::post('getCompletedCouserByEmpID', [AuthController::class, 'getCompletedCouserByEmpID']);
+
 Route::fallback(function(){
     return response()->json([
         'message' => 'Page Not Found. IF ... error persists, contact codexage@gmail.com'], 404);

@@ -10,9 +10,53 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use Illuminate\Support\Arr;
 
 class AuthController extends Controller
 {
+    //getCompletedCouserByEmpID
+    public function getCompletedCouserByEmpID(Request $request)
+    {
+        $emp_id=$request->emp_id;
+
+        $usersArr = DB::table('course_progress')
+            ->where('user_id',$emp_id)
+            ->where('point',100)
+            ->get();
+            $users = DB::table('users')
+            ->where('id',$emp_id)          
+            ->first();
+
+            $data=array();
+            foreach ($usersArr as $key => $value) {
+               $data[]=array(
+                   'user_id'=>$value->user_id,
+                   'user_name'=>$users->firstname."".$users->lastname,
+               );
+            }
+
+
+
+            if(count($usersArr)>0){
+                $accessToken = '';
+                $message = strtoupper('SUCCESS-CATEGORY');
+                $message_action = "Auth:setCategorywithEmpID-001";
+    
+                return $this->setSuccessResponse($data, $message, "Auth:setCategorywithEmpID", $accessToken, $message_action);
+    
+            }else{
+                $message = strtoupper('Not found');
+                $message_action = "Auth:setCategorywithEmpID-002";
+                return $this->setWarningResponse([], $message, $message_action, "", $message_action);
+            }
+
+            
+           
+
+
+    }
+    //getCompletedCouserByEmpID
+
 
     //setSubCategorywithEmpIDwithSubCatIDCouserID
     public function setSubCategorywithEmpIDwithSubCatIDCouserID(Request $request)

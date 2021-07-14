@@ -29,9 +29,26 @@ class AuthController extends Controller
 
             $data=array();
             foreach ($usersArr as $key => $value) {
+
+            $courseArr = DB::table('course_list')
+            ->where('id',$value->course_id)          
+            ->first();
+            $user_coursecatArr = DB::table('user_coursecat_list')
+            ->where('course_id',$value->course_id)          
+            ->where('user_id',$value->user_id)          
+            ->first();
+            $sub_cat_id=$user_coursecatArr->sub_cat_id;
+            $courseSubcatArr = DB::table('coursecat_list')
+            ->where('id',$sub_cat_id)          
+            ->first();
+
                $data[]=array(
                    'user_id'=>$value->user_id,
                    'user_name'=>$users->firstname."".$users->lastname,
+                   'course_name'=>$courseArr->name,
+                   'sub_cate_name'=>$courseSubcatArr->name_cat,
+                   'point'=>$value->point,
+                   'completed_at'=>$user_coursecatArr->created_at
                );
             }
 

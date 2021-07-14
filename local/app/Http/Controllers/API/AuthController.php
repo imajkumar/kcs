@@ -59,9 +59,18 @@ class AuthController extends Controller
             return $this->setSuccessResponse($data, $message, "Auth:setCategorywithEmpID", $accessToken, $message_action);
 
         }else{
+            $data = DB::table('user_coursecat_list')
+            ->join('course_list', 'user_coursecat_list.course_id', '=', 'course_list.id')
+            ->join('coursecat_list', 'user_coursecat_list.sub_cat_id', '=', 'coursecat_list.id')
+            ->where('user_coursecat_list.user_id', $emp_id)
+
+            ->select('course_list.id as course_id', 'course_list.name', 'course_list.photo as coursePhoto', 'course_list.base_path','coursecat_list.name_cat as sub_cat_name','coursecat_list.photo as cousercat_photo')
+            ->get();
+
+
             $message = strtoupper('Already added');
             $message_action = "Auth:setSubCategorywithEmpIDwithSubCatIDCouserID-002";
-            return $this->setWarningResponse([], $message, $message_action, "", $message_action);
+            return $this->setWarningResponse($data, $message, $message_action, "", $message_action);
 
         }
     }
@@ -104,9 +113,16 @@ class AuthController extends Controller
 
             return $this->setSuccessResponse($data, $message, "Auth:setCategorywithEmpID", $accessToken, $message_action);
         } else {
+            $data = DB::table('user_course_list')
+            ->join('course_list', 'user_course_list.course_id', '=', 'course_list.id')
+            ->where('user_course_list.user_id', $emp_id)
+
+            ->select('course_list.id as course_id', 'course_list.name', 'course_list.photo', 'course_list.base_path')
+            ->get();
+
             $message = strtoupper('Already added');
             $message_action = "Auth:setCategorywithEmpID-002";
-            return $this->setWarningResponse([], $message, $message_action, "", $message_action);
+            return $this->setWarningResponse($data, $message, $message_action, "", $message_action);
         }
     }
     //setCategorywithEmpID

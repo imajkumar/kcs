@@ -24,14 +24,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('getProfile', [AuthController::class, 'getProfile']);
-Route::get('getCategory', [AuthController::class, 'getCategory']);
-Route::get('getSubCategory', [AuthController::class, 'getSubCategory']);
-Route::get('getProgress', [AuthController::class, 'getProgress']);
+Route::get('getCategory', [AuthController::class, 'getCategory']); //OK
+Route::get('getSubCategoryA', [AuthController::class, 'getSubCategory']); //NO
+Route::get('getProgressA', [AuthController::class, 'getProgress']); //NO
+
+Route::post('setCategorywithEmpID', [AuthController::class, 'setCategorywithEmpID']);
+Route::post('setSubCategorywithEmpIDwithSubCatIDCouserID', [AuthController::class, 'setSubCategorywithEmpIDwithSubCatIDCouserID']);
+
+
 Route::post('getProgressByEmpID', [AuthController::class, 'getProgressByEmpID']);
-Route::post('getSubCategoryByCateID', [AuthController::class, 'getSubCategoryByCateID']);
+
 Route::post('getCategoryByEmpID', [AuthController::class, 'getCategoryByEmpID']);
-
-
+Route::post('getSubCategoryByCateID', [AuthController::class, 'getSubCategoryByCateID']);
+Route::post('getSubCategoryByEmpID', [AuthController::class, 'getSubCategoryByEmpID']);
 Route::fallback(function(){
     return response()->json([
         'message' => 'Page Not Found. IF ... error persists, contact codexage@gmail.com'], 404);

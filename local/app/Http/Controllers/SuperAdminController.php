@@ -837,6 +837,8 @@ public function deleteUserPoint(Request $request)
             $data_arr[] = array(
                 'RecordID' => $value->id,
                 'IndexID' => $i,               
+                'couser_id' => $usersData->id,
+                'sub_cat_id' => $value->id,
                 'name' => $usersData->name,
                 'cat_name' => $value->name_cat,
                 'created_by' =>  $usersDatauser->firstname,
@@ -853,6 +855,8 @@ public function deleteUserPoint(Request $request)
         $columnsDefault = [
             'RecordID'  => true,
             'IndexID' => true,            
+            'couser_id'      => true,
+            'sub_cat_id'      => true,
             'name'      => true,
             'cat_name'      => true,
             'created_by'      => true,

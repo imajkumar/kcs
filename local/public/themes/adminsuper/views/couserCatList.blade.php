@@ -155,8 +155,10 @@
 					<tr>
 						<th>Record ID</th>
 						<th>S#</th>
-						<th>Image</th>
+						<th>Course ID</th>
+						<th>SubCat ID</th>						
 						<th>Couse Name</th>
+						<th>Image</th>
 						<th>Sub Category</th>
 						<th>Create By </th>
 						<th>Created on</th>						

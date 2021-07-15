@@ -2677,6 +2677,9 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
             "name",
             "photo",
             "base_path",
+            "couser_id",
+            "sub_cat_id",
+            "base_path",
             "cat_name",
             "created_by",
             "created_at",           
@@ -2688,6 +2691,8 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
       columns: [
         { data: "RecordID" },
         { data: "IndexID" },
+        { data: "couser_id" },
+        { data: "sub_cat_id" },
         { data: "name" },
         { data: "photo" },
         { data: "cat_name" },
@@ -2723,7 +2728,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
           },
         },
         {
-          targets: 3,
+          targets: 5,
           width: 50,
           title: "Image",
           orderable: false,
@@ -2735,7 +2740,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
         },
        
         {
-          targets: 7,
+          targets: 9,
           width: 50,
           title: "Status",
           orderable: false,

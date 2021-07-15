@@ -48,6 +48,10 @@ class AuthController extends Controller
                    'course_name'=>$courseArr->name,
                    'sub_cate_name'=>$courseSubcatArr->name_cat,
                    'point'=>$value->point,
+                   'completed_at'=>$user_coursecatArr->created_at,
+                   'course_photo'=>$courseArr->photo,
+                   'subcat_photo'=>$courseSubcatArr->photo,
+                   'base_path'=>$courseArr->base_path,
                    'completed_at'=>$user_coursecatArr->created_at
                );
             }

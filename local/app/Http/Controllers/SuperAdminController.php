@@ -356,7 +356,7 @@ class SuperAdminController extends Controller
                 'email' => $request->email,
                 'created_at' => date('Y-m-d'),
                 'avatar' =>'',
-                'base_path' =>getBaseURL(),
+                'base_path' =>'',
                 'password' => Hash::make($pass),
             ]);
             $dev_perm = Permission::where('slug', 'create-tasks')->first();

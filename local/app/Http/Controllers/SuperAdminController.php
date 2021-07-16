@@ -239,6 +239,8 @@ class SuperAdminController extends Controller
             ->update([
                 'name' => $request->name,
                 'couser_info' => $request->couser_info,
+                'photo' => '',
+                'base_path' => ''
 
             ]);
 
@@ -267,6 +269,8 @@ class SuperAdminController extends Controller
                 'name_cat' => $request->name_cat,
                 'created_by' => Auth::user()->id,
                 'created_at' => date('Y-m-d H:i:s'),
+                'photo' => '',
+                'base_path' => ''
 
 
             ]);

@@ -97,13 +97,19 @@ class AuthController extends Controller
                 'sub_cat_id' => $sub_cat_id,
                 'user_id' => $emp_id,
                 'created_at' => date('Y-m-d H:i:s'),
+                'notes' =>'',
+                
 
             ]);
 
             DB::table('course_progress')
             ->updateOrInsert(
                 ['user_id' => $emp_id, 'course_id' => $course_id],
-                ['point' => '100']
+                [
+                    'point' => '100',
+                    'created_by' => $emp_id,
+                    
+                ]
             );
 
             $data = DB::table('user_coursecat_list')
@@ -153,13 +159,18 @@ class AuthController extends Controller
                 'course_id' => $course_id,
                 'user_id' => $emp_id,
                 'created_at' => date('Y-m-d H:i:s'),
+                'notes' => '',
+                'sub_cat_id' => ''
 
             ]);
 
             DB::table('course_progress')
             ->updateOrInsert(
                 ['user_id' => $emp_id, 'course_id' => $course_id],
-                ['point' => '0']
+                [
+                    'point' => '0',
+                    'created_by' => $emp_id,
+                ]
             );
 
             $data = DB::table('user_course_list')

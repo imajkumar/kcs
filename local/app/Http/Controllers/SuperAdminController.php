@@ -367,7 +367,7 @@ class SuperAdminController extends Controller
 
             $data = array(
                 'title' => $request->firstname,
-                'empID' => $request->id,
+                'empID' => $user->id,
                 'email' => $request->email,
                 'password' => $passRnd,
 

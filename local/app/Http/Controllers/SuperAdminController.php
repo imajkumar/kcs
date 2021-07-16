@@ -345,7 +345,7 @@ class SuperAdminController extends Controller
         if ($users == null) {
 
             $passRnd = $this->randomPassword();
-            $pass = 123456;
+            $pass = $passRnd;
             $user = User::create([
                 'firstname' =>  $request->firstname,
                 'lastname' => $request->lastname,
@@ -367,6 +367,7 @@ class SuperAdminController extends Controller
 
             $data = array(
                 'title' => $request->firstname,
+                'empID' => $request->id,
                 'email' => $request->email,
                 'password' => $passRnd,
 

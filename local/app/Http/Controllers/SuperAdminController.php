@@ -17,7 +17,7 @@ use Carbon\Carbon;
 class SuperAdminController extends Controller
 {
 
-   
+
 
     //getAnnoucedList
     //getAnnoucedList
@@ -34,39 +34,37 @@ class SuperAdminController extends Controller
     public function getHighcartUsersAddedMonthly(Request $request)
     {
         $monthlyVal = array();
-    $monthName = array();
-    $year_digit = "2021";
+        $monthName = array();
+        $year_digit = "2021";
 
-    for ($x = 1; $x <= 12; $x++) {
-
-
-     
-
-      $data_output = 13;
-
-      $monthlyVal[] = (float)$data_output;
-
-      $month = $x;
-
-
-      $month = substr($month, -2, 2);
-      $mN = date('M-' . $year_digit, strtotime(date('Y-' . $month . '-d')));
-      $monthName[] = $mN;
-    }
-
-
-    
+        for ($x = 1; $x <= 12; $x++) {
 
 
 
-    $resp = array(
-      'monthlyValue' => $monthlyVal,
-      'MonthName' => $monthName,
 
-    );
-    return response()->json($resp);
+            $data_output = 13;
+
+            $monthlyVal[] = (float)$data_output;
+
+            $month = $x;
 
 
+            $month = substr($month, -2, 2);
+            $mN = date('M-' . $year_digit, strtotime(date('Y-' . $month . '-d')));
+            $monthName[] = $mN;
+        }
+
+
+
+
+
+
+        $resp = array(
+            'monthlyValue' => $monthlyVal,
+            'MonthName' => $monthName,
+
+        );
+        return response()->json($resp);
     }
     //getHighcartUsersAddedMonthly
 
@@ -74,20 +72,21 @@ class SuperAdminController extends Controller
     //uploadFile
     public function uploadFile(Request $request)
     {
-        if($request->action==1){
-           
+        if ($request->action == 1) {
+
             if ($request->hasFile('file')) {
                 $file = $request->file('file');
                 $filename = $request->txtSID . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
                 // save to local/public/uploads/photo/ as the new $filename
                 //var/www/larachat/local/public/storage/users-avatar
                 $path = $file->storeAs('doc', $filename);
-        
-        
+
+
                 $affected = DB::table('users')
                     ->where('id', $request->txtSID,)
-                    ->update(['avatar' => $filename,
-                    'base_path' => getBaseURL()."/local/storage/app/doc/",
+                    ->update([
+                        'avatar' => $filename,
+                        'base_path' => getBaseURL() . "/local/storage/app/doc/",
                     ]);
             }
             $data = array(
@@ -95,44 +94,44 @@ class SuperAdminController extends Controller
                 'status' => 1
             );
         }
-        if($request->action==2){
-           
+        if ($request->action == 2) {
+
             if ($request->hasFile('file')) {
                 $file = $request->file('file');
                 $filename = $request->txtSID . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
                 // save to local/public/uploads/photo/ as the new $filename
                 //var/www/larachat/local/public/storage/users-avatar
                 $path = $file->storeAs('doc', $filename);
-        
-        
+
+
                 $affected = DB::table('course_list')
                     ->where('id', $request->txtSID,)
                     ->update([
                         'photo' => $filename,
-                        'base_path' => getBaseURL()."/local/storage/app/doc/",
-                        ]);
+                        'base_path' => getBaseURL() . "/local/storage/app/doc/",
+                    ]);
             }
             $data = array(
                 'msg' => 'Uploaded Successfully',
                 'status' => 1
             );
         }
-        if($request->action==3){
-           
+        if ($request->action == 3) {
+
             if ($request->hasFile('file')) {
                 $file = $request->file('file');
                 $filename = $request->txtSID . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
                 // save to local/public/uploads/photo/ as the new $filename
                 //var/www/larachat/local/public/storage/users-avatar
                 $path = $file->storeAs('doc', $filename);
-        
-        
+
+
                 $affected = DB::table('coursecat_list')
                     ->where('id', $request->txtSID,)
                     ->update([
                         'photo' => $filename,
-                        'base_path' => getBaseURL()."/local/storage/app/doc/",
-                        ]);
+                        'base_path' => getBaseURL() . "/local/storage/app/doc/",
+                    ]);
             }
             $data = array(
                 'msg' => 'Uploaded Successfully',
@@ -140,11 +139,10 @@ class SuperAdminController extends Controller
             );
         }
 
-   
-      return response()->json($data);
-   
+
+        return response()->json($data);
     }
-     //uploadFile
+    //uploadFile
 
 
     public function UserResetPassword(Request $request)
@@ -211,24 +209,23 @@ class SuperAdminController extends Controller
     public function saveCourseCATEdit(Request $request)
     {
         $affected = DB::table('coursecat_list')
-        ->where('id', $request->txtID)
-        ->update([
-            'course_id' => $request->course_id,         
-            'name_cat' => $request->name_cat,         
+            ->where('id', $request->txtID)
+            ->update([
+                'course_id' => $request->course_id,
+                'name_cat' => $request->name_cat,
 
-        ]);
-
-        
-
-          
+            ]);
 
 
-                $data = array(
-                    'msg' => 'Submitted Successfully ',
-                    'status' => 1
-                );
-                return response()->json($data);
-            
+
+
+
+
+        $data = array(
+            'msg' => 'Submitted Successfully ',
+            'status' => 1
+        );
+        return response()->json($data);
     }
 
     //saveCourseCATEdit
@@ -238,25 +235,23 @@ class SuperAdminController extends Controller
     {
 
         $affected = DB::table('course_list')
-        ->where('id', $request->txtID)
-        ->update([
-            'name' => $request->name,         
-            'couser_info' => $request->couser_info,         
+            ->where('id', $request->txtID)
+            ->update([
+                'name' => $request->name,
+                'couser_info' => $request->couser_info,
 
-        ]);
-
-        
-
-          
+            ]);
 
 
-                $data = array(
-                    'msg' => 'Submitted Successfully ',
-                    'status' => 1
-                );
-                return response()->json($data);
-            
-        
+
+
+
+
+        $data = array(
+            'msg' => 'Submitted Successfully ',
+            'status' => 1
+        );
+        return response()->json($data);
     }
 
     //saveCourseEdit
@@ -264,15 +259,15 @@ class SuperAdminController extends Controller
     public function saveCourseCATData(Request $request)
     {
         $users = DB::table('coursecat_list')
-        ->where('name_cat', $request->name_cat)
-        ->first();
+            ->where('name_cat', $request->name_cat)
+            ->first();
         if ($users == null) {
             DB::table('coursecat_list')->insert([
                 'course_id' => $request->course_id,
                 'name_cat' => $request->name_cat,
                 'created_by' => Auth::user()->id,
                 'created_at' => date('Y-m-d H:i:s'),
-                
+
 
             ]);
             //send email to user
@@ -281,16 +276,13 @@ class SuperAdminController extends Controller
                 'status' => 1
             );
             return response()->json($data);
-            
-        }else{
+        } else {
             $data = array(
                 'msg' => 'Already Added ',
                 'status' => 1
             );
             return response()->json($data);
-
         }
-
     }
     //saveCourseCATData
 
@@ -299,42 +291,42 @@ class SuperAdminController extends Controller
     {
 
 
-        
 
-          
 
-            $users = DB::table('course_list')
-                ->where('name', $request->name)
-                ->first();
 
-            if ($users == null) {
-               
-                DB::table('course_list')->insert([
-                    'name' => $request->name,
-                    'created_by' => Auth::user()->id,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'couser_info' => $request->couser_info,
-    
-                ]);
-                //send email to user
-                $data = array(
-                    'msg' => 'Submitted Successfully',
-                    'status' => 1
-                );
-                return response()->json($data);
-            } else {
-                $data = array(
-                    'msg' => 'Already Added ',
-                    'status' => 1
-                );
-                return response()->json($data);
-            }
-        
+
+        $users = DB::table('course_list')
+            ->where('name', $request->name)
+            ->first();
+
+        if ($users == null) {
+
+            DB::table('course_list')->insert([
+                'name' => $request->name,
+                'created_by' => Auth::user()->id,
+                'created_at' => date('Y-m-d H:i:s'),
+                'couser_info' => $request->couser_info,
+
+            ]);
+            //send email to user
+            $data = array(
+                'msg' => 'Submitted Successfully',
+                'status' => 1
+            );
+            return response()->json($data);
+        } else {
+            $data = array(
+                'msg' => 'Already Added ',
+                'status' => 1
+            );
+            return response()->json($data);
+        }
     }
 
     //saveCourseData
 
-    public function randomPassword() {
+    public function randomPassword()
+    {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
@@ -345,71 +337,128 @@ class SuperAdminController extends Controller
         return implode($pass); //turn the array into a string
     }
 
-    //saveUserData
     public function saveUserData(Request $request)
+    {
+        $users = DB::table('users')
+            ->where('email', $request->email)
+            ->first();
+        if ($users == null) {
+
+            $passRnd = $this->randomPassword();
+            $pass = 123456;
+            $user = User::create([
+                'firstname' =>  $request->firstname,
+                'lastname' => $request->lastname,
+                'phone' =>  $request->phone,
+                'user_type' => 3,
+                'user_position' =>  $request->user_position,
+                'address' => $request->user_address,
+                'email' => $request->email,
+                'password' => Hash::make($pass),
+            ]);
+            $dev_perm = Permission::where('slug', 'create-tasks')->first();
+            $user->roles()->attach(1);
+            $user->permissions()->attach($dev_perm);
+
+
+            //send email to user
+            $sent_to = $request->email;
+            $subLine = "Login credential of KCS Guide";
+
+            $data = array(
+                'title' => $request->firstname,
+                'email' => $request->email,
+                'password' => $passRnd,
+
+
+            );
+
+            Mail::send('mail_school', $data, function ($message) use ($sent_to,  $subLine) {
+
+                $message->to($sent_to, 'Bo')->subject($subLine);
+                //$message->cc($use_data->email, $use_data->name = null);
+                //$message->bcc('udita.bointl@gmail.com', 'UDITA');
+                $message->from('codexage@gmail.com', 'KCS Guide');
+            });
+
+            //send email to user
+            $data = array(
+                'msg' => 'Submitted Successfully',
+                'status' => 1
+            );
+            return response()->json($data);
+        } else {
+            $data = array(
+                'msg' => 'Already Added ',
+                'status' => 1
+            );
+            return response()->json($data);
+        }
+    }
+    //saveUserData
+    public function saveUserData_2(Request $request)
     {
 
 
-        
-
-          
-
-            $users = DB::table('users')
-                ->where('email', $request->email)
-                ->first();
-            $passRnd=$this->randomPassword();
-
-            if ($users == null) {
-                $dev_role = Role::where('slug', 'user')->first();
-                $dev_perm = Permission::where('slug', 'create-tasks')->first();
-                $developer = new User();
-                $developer->id =getMaxID();
-                $developer->firstname = $request->firstname;
-                $developer->lastname = $request->lastname;
-                $developer->email = $request->email;
-                $developer->phone = $request->phone;
-                $developer->user_type = 3;
-                $developer->gender = $request->gender;
-                $developer->user_position = $request->user_position;
-                $developer->address = $request->user_address;
-                $developer->password = bcrypt('passRnd');
-                $developer->save();
-                $developer->roles()->attach($dev_role);
-                $developer->permissions()->attach($dev_perm);
-                //send email to user
-                $sent_to = $request->email;
-                $subLine = "Login credential of KCS Guide";
-
-                $data = array(
-                    'title' => $request->firstname,
-                    'email' => $request->email,
-                    'password' => '123456',
 
 
-                );
 
-                Mail::send('mail_school', $data, function ($message) use ($sent_to,  $subLine) {
 
-                    $message->to($sent_to, 'Bo')->subject($subLine);
-                    //$message->cc($use_data->email, $use_data->name = null);
-                    //$message->bcc('udita.bointl@gmail.com', 'UDITA');
-                    $message->from('codexage@gmail.com', 'KCS Guide');
-                });
+        $users = DB::table('users')
+            ->where('email', $request->email)
+            ->first();
+        $passRnd = $this->randomPassword();
 
-                //send email to user
-                $data = array(
-                    'msg' => 'Submitted Successfully',
-                    'status' => 1
-                );
-                return response()->json($data);
-            } else {
-                $data = array(
-                    'msg' => 'Already Added ',
-                    'status' => 1
-                );
-                return response()->json($data);
-            }
-        
+        if ($users == null) {
+            $dev_role = Role::where('slug', 'user')->first();
+            $dev_perm = Permission::where('slug', 'create-tasks')->first();
+            $developer = new User();
+            $developer->id = getMaxID();
+            $developer->firstname = $request->firstname;
+            $developer->lastname = $request->lastname;
+            $developer->email = $request->email;
+            $developer->phone = $request->phone;
+            $developer->user_type = 3;
+            $developer->gender = $request->gender;
+            $developer->user_position = $request->user_position;
+            $developer->address = $request->user_address;
+            $developer->password = bcrypt('passRnd');
+            $developer->save();
+            $developer->roles()->attach($dev_role);
+            $developer->permissions()->attach($dev_perm);
+            //send email to user
+            $sent_to = $request->email;
+            $subLine = "Login credential of KCS Guide";
+
+            $data = array(
+                'title' => $request->firstname,
+                'email' => $request->email,
+                'password' => '123456',
+
+
+            );
+
+            Mail::send('mail_school', $data, function ($message) use ($sent_to,  $subLine) {
+
+                $message->to($sent_to, 'Bo')->subject($subLine);
+                //$message->cc($use_data->email, $use_data->name = null);
+                //$message->bcc('udita.bointl@gmail.com', 'UDITA');
+                $message->from('codexage@gmail.com', 'KCS Guide');
+            });
+
+            //send email to user
+            $data = array(
+                'msg' => 'Submitted Successfully',
+                'status' => 1
+            );
+            return response()->json($data);
+        } else {
+            $data = array(
+                'msg' => 'Already Added ',
+                'status' => 1
+            );
+            return response()->json($data);
+        }
     }
     //saveUserData
 
@@ -675,51 +724,51 @@ class SuperAdminController extends Controller
 
     //deleteCouseCat
     public function deleteCouseCat(Request $request)
-{
-    $affected = DB::table('coursecat_list')
-        ->where('id', $request->rowid)
-        ->update(['is_deleted' => 1]);
+    {
+        $affected = DB::table('coursecat_list')
+            ->where('id', $request->rowid)
+            ->update(['is_deleted' => 1]);
 
-    $data = array(
-        'msg' => 'Deleted Successfully',
-        'status' => 1
-    );
-    return response()->json($data);
-}
+        $data = array(
+            'msg' => 'Deleted Successfully',
+            'status' => 1
+        );
+        return response()->json($data);
+    }
 
     //deleteCouseCat
 
 
-//deleteCouse
-public function deleteCouse(Request $request)
-{
-    $affected = DB::table('course_list')
-        ->where('id', $request->rowid)
-        ->update(['is_deleted' => 1]);
+    //deleteCouse
+    public function deleteCouse(Request $request)
+    {
+        $affected = DB::table('course_list')
+            ->where('id', $request->rowid)
+            ->update(['is_deleted' => 1]);
 
-    $data = array(
-        'msg' => 'Deleted Successfully',
-        'status' => 1
-    );
-    return response()->json($data);
-}
-//deleteCouse
+        $data = array(
+            'msg' => 'Deleted Successfully',
+            'status' => 1
+        );
+        return response()->json($data);
+    }
+    //deleteCouse
 
-//deleteUserPoint
-public function deleteUserPoint(Request $request)
-{
-    $affected = DB::table('course_progress')
-        ->where('id', $request->rowid)
-        ->update(['is_deleted' => 1]);
+    //deleteUserPoint
+    public function deleteUserPoint(Request $request)
+    {
+        $affected = DB::table('course_progress')
+            ->where('id', $request->rowid)
+            ->update(['is_deleted' => 1]);
 
-    $data = array(
-        'msg' => 'Deleted Successfully',
-        'status' => 1
-    );
-    return response()->json($data);
-}
+        $data = array(
+            'msg' => 'Deleted Successfully',
+            'status' => 1
+        );
+        return response()->json($data);
+    }
 
-//deleteUserPoint
+    //deleteUserPoint
 
     //deleteUser
     public function deleteUser(Request $request)
@@ -828,7 +877,7 @@ public function deleteUserPoint(Request $request)
         foreach ($users_arrArr as $key => $value) {
             $i++;
 
-            
+
             $usersData = DB::table('course_list')->where('id', $value->course_id)->first();
             $usersDatauser = DB::table('users')->where('id', $value->created_by)->first();
 
@@ -836,13 +885,13 @@ public function deleteUserPoint(Request $request)
 
             $data_arr[] = array(
                 'RecordID' => $value->id,
-                'IndexID' => $i,               
+                'IndexID' => $i,
                 'couser_id' => $usersData->id,
                 'sub_cat_id' => $value->id,
                 'name' => $usersData->name,
                 'cat_name' => $value->name_cat,
                 'created_by' =>  $usersDatauser->firstname,
-                'created_at' =>  date('j F Y H:iA',strtotime($value->created_at)),               
+                'created_at' =>  date('j F Y H:iA', strtotime($value->created_at)),
                 'status' => $value->status,
                 'photo' => $value->photo,
                 'base_path' => $value->base_path,
@@ -854,16 +903,16 @@ public function deleteUserPoint(Request $request)
         $JSON_Data = json_encode($data_arr);
         $columnsDefault = [
             'RecordID'  => true,
-            'IndexID' => true,            
+            'IndexID' => true,
             'couser_id'      => true,
             'sub_cat_id'      => true,
             'name'      => true,
             'cat_name'      => true,
             'created_by'      => true,
             'created_at'      => true,
-            'status'      => true,           
-            'photo'      => true,           
-            'base_path'      => true,           
+            'status'      => true,
+            'photo'      => true,
+            'base_path'      => true,
             'Actions'      => true,
         ];
 
@@ -884,17 +933,17 @@ public function deleteUserPoint(Request $request)
         foreach ($users_arrArr as $key => $value) {
             $i++;
 
-            
+
             $usersData = DB::table('users')->where('id', $value->created_by)->first();
 
             //---------------------------------------
 
             $data_arr[] = array(
                 'RecordID' => $value->id,
-                'IndexID' => $i,               
+                'IndexID' => $i,
                 'name' => $value->name,
                 'created_by' =>  $usersData->firstname,
-                'created_at' =>  date('J F Y H:iA',strtotime($value->created_at)),               
+                'created_at' =>  date('J F Y H:iA', strtotime($value->created_at)),
                 'status' => $value->status,
                 'photo' => $value->photo,
                 'base_path' => $value->base_path,
@@ -906,13 +955,13 @@ public function deleteUserPoint(Request $request)
         $JSON_Data = json_encode($data_arr);
         $columnsDefault = [
             'RecordID'  => true,
-            'IndexID' => true,            
+            'IndexID' => true,
             'name'      => true,
             'created_by'      => true,
             'created_at'      => true,
-            'status'      => true,           
-            'photo'      => true,           
-            'base_path'      => true,           
+            'status'      => true,
+            'photo'      => true,
+            'base_path'      => true,
             'Actions'      => true,
         ];
 
@@ -987,14 +1036,14 @@ public function deleteUserPoint(Request $request)
             $created_byArr = DB::table('users')->where('id', $value->created_by)->first();
 
 
-           
+
 
             //---------------------------------------
 
             $data_arr[] = array(
                 'RecordID' => $value->id,
-                'IndexID' => $i,                
-                'name' => $usersArr->firstname." ".$usersArr->lastname,
+                'IndexID' => $i,
+                'name' => $usersArr->firstname . " " . $usersArr->lastname,
                 'course' =>  $course_listArr->name,
                 'point' => $value->point,
                 'created_at' => $value->created_at,
@@ -1007,7 +1056,7 @@ public function deleteUserPoint(Request $request)
         $JSON_Data = json_encode($data_arr);
         $columnsDefault = [
             'RecordID'  => true,
-            'IndexID' => true,            
+            'IndexID' => true,
             'name'      => true,
             'course'      => true,
             'point'      => true,
@@ -1021,5 +1070,5 @@ public function deleteUserPoint(Request $request)
     //getDatatableUserProgressList
 
 
-    
+
 }

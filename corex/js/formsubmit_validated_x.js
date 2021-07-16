@@ -63,9 +63,10 @@ var KTFormControls = function () {
           
             var txtAction =$( "input[name=txtAction]" ).val();
             if(txtAction=="__edit"){
-            var URLLINK= BASE_URL + "/saveUserData";
-            }else{
               var URLLINK= BASE_URL + "/saveUserEdit";
+            }else{
+              
+              var URLLINK= BASE_URL + "/saveUserData";
             }
 
           

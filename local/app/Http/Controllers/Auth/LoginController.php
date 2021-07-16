@@ -42,7 +42,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     public function customLogin(Request $request){
-        $model = User::where('email', $request->email)->first();
+        $model = User::where('email', $request->email)->where('user_type',1)->first();
         if($model==null){
             $data = array(
                 'login_token' => '',

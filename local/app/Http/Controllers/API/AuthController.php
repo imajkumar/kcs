@@ -158,7 +158,7 @@ class AuthController extends Controller
             DB::table('user_course_list')->insert([
                 'course_id' => $course_id,
                 'user_id' => $emp_id,
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d h:i:s'),
                 'notes' => '',
                 'sub_cat_id' => ''
 
@@ -202,17 +202,86 @@ class AuthController extends Controller
         }
     }
     //setCategorywithEmpID
+    //updateProfile
+    public function updateProfile(Request $request)
+    {
+       
+        $validatedData = $request->only('emp_id','address','avatar');
+        // print_r($request->all());
+        // die;
+        $rules = [
+
+            'emp_id' => 'required',
+            'address' => 'required',
+
+        ];
+        $validator = Validator::make($validatedData, $rules);
+        if ($validator->fails()) {
+            $message = strtoupper('Invalid Input');
+            $message_action = "Auth:UpdateGetProfile-001";
+            return $this->setWarningResponse([], $message, $message_action, "", $message_action);
+        }
+        $users = User::where('id', $request->emp_id)
+        ->first();
+        if ($users == null) {
+            $message = strtoupper('Opps! not found');
+            $message_action = "Auth:UpdateGetProfile-001";
+            return $this->setWarningResponse([], $message, $message_action, "", $message_action);
+        }else{
+
+
+            $affected = DB::table('users')
+            ->where('id', $request->emp_id,)
+            ->update([
+                'address' => $request->address
+            ]);
+
+
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $filename = $request->emp_id . "_user_" . rand(10, 1000) . "_" . date('Ymshis') . '.' . $file->getClientOriginalExtension();
+                // save to local/public/uploads/photo/ as the new $filename
+                //var/www/larachat/local/public/storage/users-avatar
+                $path = $file->storeAs('doc', $filename);
+
+
+                $affected = DB::table('users')
+                    ->where('id', $request->emp_id,)
+                    ->update(['avatar' => $filename]);
+            }
+
+
+            $model = User::where('id', $request->emp_id)->first();
+
+            Auth::loginUsingId($model->id, true);
+
+            $accessToken = auth()->user()->createToken('authToken')->accessToken;
+            $userA = auth()->user();
+            $data = $userA->only(['id', 'firstname', 'lastname', 'email', 'phone', 'user_position', 'address', 'created_at', 'avatar', 'base_path']);
+            $message = strtoupper('SUCCESS-LOGIN');
+            $message_action = "Auth:Login-001";
+
+            return $this->setSuccessResponse($data, $message, "Auth:Login", $accessToken, $message_action);
+            
+
+        }
+
+
+    }
+    //updateProfile
+
 
     //getCategoryByEmpID
     public function getCategoryByEmpID(Request $request)
     {
         $emp_id = $request->emp_id;
+
         $data = DB::table('user_course_list')
         ->join('course_list', 'user_course_list.course_id', '=', 'course_list.id')
         ->join('course_progress', 'user_course_list.course_id', '=', 'course_progress.course_id')
 
         ->where('user_course_list.user_id', $emp_id)
-
+        ->where('course_progress.point','!=',100)
         ->select('course_list.id as course_id', 'course_list.name', 'course_list.photo', 'course_list.base_path','course_progress.point')
         ->get();
 

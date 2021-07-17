@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('getProfile', [AuthController::class, 'getProfile']);
+Route::post('updateProfile', [AuthController::class, 'updateProfile']);
 Route::get('getCategory', [AuthController::class, 'getCategory']); //OK
 Route::get('getSubCategoryA', [AuthController::class, 'getSubCategory']); //NO
 Route::get('getProgressA', [AuthController::class, 'getProgress']); //NO

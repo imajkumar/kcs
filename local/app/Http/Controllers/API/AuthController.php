@@ -206,12 +206,14 @@ class AuthController extends Controller
     public function updateProfile(Request $request)
     {
        
-        $validatedData = $request->only('emp_id','address','avatar');
+        $validatedData = $request->only('emp_id','address','avatar','firstname','lastname');
         // print_r($request->all());
         // die;
         $rules = [
 
             'emp_id' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'address' => 'required',
 
         ];
@@ -233,7 +235,10 @@ class AuthController extends Controller
             $affected = DB::table('users')
             ->where('id', $request->emp_id,)
             ->update([
-                'address' => $request->address
+                'address' => $request->address,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname
+
             ]);
 
 

@@ -862,6 +862,20 @@ class SuperAdminController extends Controller
     //edit_course
 
 
+    //addCourseUser
+    public function addCourseUser($id)
+    {
+        $schoolsArr = DB::table('users')
+            ->where('id', $id)
+            ->first();
+        $theme = Theme::uses('adminsuper')->layout('layout');
+
+        $data = ["data" => $schoolsArr];
+        return $theme->scope('add_course_user', $data)->render();
+    }
+
+    //addCourseUser
+
     public function edit_user($id)
     {
         $schoolsArr = DB::table('users')
@@ -975,6 +989,50 @@ class SuperAdminController extends Controller
 
         $this->DataGridResponse($JSON_Data, $columnsDefault);
     }
+    //saveUserCouser
+    public function saveUserCouser(Request $request)
+    {
+       
+        $course_id = $request->course_id;
+        $emp_id = $request->user_id;
+        $courseArr = DB::table('user_course_list')
+            ->where('course_id', $course_id)
+            ->where('user_id', $emp_id)
+            ->first();
+        if ($courseArr == null) {
+            DB::table('user_course_list')->insert([
+                'course_id' => $course_id,
+                'user_id' => $emp_id,
+                'created_at' => date('Y-m-d h:i:s'),
+                'notes' => '',
+                'sub_cat_id' => ''
+
+            ]);
+
+            DB::table('course_progress')
+            ->updateOrInsert(
+                ['user_id' => $emp_id, 'course_id' => $course_id],
+                [
+                    'point' => '0',
+                    'created_by' => $emp_id,
+                ]
+            );
+            $data = array(
+                'msg' => 'Added Successfully',
+                'status' => 1
+            );
+            return response()->json($data);
+
+    }else{
+        $data = array(
+            'msg' => 'Already Exists',
+            'status' => 2
+        );
+        return response()->json($data);
+    }
+}
+    //saveUserCouser
+
 
     //getDatatableCourseList
 
@@ -1002,7 +1060,7 @@ class SuperAdminController extends Controller
                 'RecordID' => $value->id,
                 'IndexID' => $i,
                 'photo' => $schLogo,
-                'name' => $value->firstname,
+                'name' => $value->firstname." ".$value->lastname,
                 'email' =>  $value->email,
                 'phone' => $value->phone,
                 'gender' => $value->gender,

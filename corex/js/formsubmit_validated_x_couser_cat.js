@@ -302,10 +302,8 @@ var KTFormControls = function () {
           
             var formData = {
               name: $( "input[name=name]" ).val(),
-              couser_info: $( "input[name=couser_info]" ).val(),
+              couser_info:$('textarea[name="couser_info"]').val(),
               txtID: $( "input[name=txtID]" ).val(),
-             
-          
               _token: $( 'meta[name="csrf-token"]' ).attr( "content" ),
             };
           

@@ -62,7 +62,7 @@
 
     <script src="{{getBaseURL()}}/corex/js/superadmin_x.js"></script>
     <?php
-    if ( Request::segment(1) == "add-user" || Request::segment(1) == "edit-user") {
+    if ( Request::segment(1) == "add-user" || Request::segment(1) == "edit-user" || Request::segment(1) == "add-course-user") {
     ?>
         <script src="{{getBaseURL()}}/corex/js/formsubmit_validated_x.js"></script>
     <?php

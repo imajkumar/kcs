@@ -155,6 +155,7 @@
 					<tr>
 						<th>Record ID</th>
 						<th>S#</th>
+						<th>EMP ID </th>
 						<th>Photo</th>
 						<th>Name</th>
 						<th>Email</th>

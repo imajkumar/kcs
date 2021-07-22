@@ -57,6 +57,14 @@ Route::group(['middleware' => 'role:superadmin'], function() {
 
 
     Route::get('/edit-user/{id}', [App\Http\Controllers\SuperAdminController::class, 'edit_user'])->name('edit_user');
+    Route::get('add-course-user/{id}', [App\Http\Controllers\SuperAdminController::class, 'addCourseUser'])->name('addCourseUser');
+    Route::post('saveUserCouser', [App\Http\Controllers\SuperAdminController::class, 'saveUserCouser'])->name('saveUserCouser');
+
+    
+
+
+    
+
     Route::get('/edit-course/{id}', [App\Http\Controllers\SuperAdminController::class, 'edit_course'])->name('edit_course');
     Route::get('/edit-course-cat/{id}', [App\Http\Controllers\SuperAdminController::class, 'edit_courseCat'])->name('edit_courseCat');
 

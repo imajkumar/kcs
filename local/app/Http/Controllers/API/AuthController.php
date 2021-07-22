@@ -153,6 +153,7 @@ class AuthController extends Controller
         $emp_id = $request->emp_id;
         $courseArr = DB::table('user_course_list')
             ->where('course_id', $course_id)
+            ->where('user_id', $emp_id)
             ->first();
         if ($courseArr == null) {
             DB::table('user_course_list')->insert([

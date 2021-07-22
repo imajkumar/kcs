@@ -2357,6 +2357,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
       columns: [
         { data: "RecordID" },
         { data: "IndexID" },
+        { data: "RecordID" },
         { data: "photo" },
         { data: "name" },
         { data: "email" },
@@ -2378,6 +2379,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
           render: function (data, type, full, meta) {
             var EDIT_URL = BASE_URL + "/edit-user/" + full.RecordID;
             var VIEW_URL = BASE_URL + "/view-user/" + full.RecordID;
+            var ADDCOURSE_URL = BASE_URL + "/add-course-user/" + full.RecordID;
 
             return `<a href="${VIEW_URL}" class="btn btn-sm btn-clean btn-icon" title="View Details">\
 							<i class="la la-eye"></i>
@@ -2385,6 +2387,9 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
 					<a href="${EDIT_URL}" class="btn btn-sm btn-clean btn-icon" title="Edit details">\
 						<i class="la la-edit"></i>\
 					</a>\
+          <a href="${ADDCOURSE_URL}" class="btn btn-sm btn-clean btn-icon" title="Add Course">\
+          <i class="la la-plus"></i>\
+        </a>\
 					<a href="javascript::void(0)" onclick="deleteUser(${full.RecordID})"  class="btn btn-sm btn-clean btn-icon" title="Delete">\
 						<i class="la la-trash"></i>\
 					</a>\
@@ -2392,7 +2397,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
           },
         },
         {
-          targets: 2,
+          targets: 3,
           width: 50,
           title: "Photo",
           orderable: false,
@@ -2404,7 +2409,7 @@ var KTDatatablesSearchOptionsAdvancedSearch_UserList = (function () {
         },
       
         {
-          targets: 6,
+          targets: 7,
           width: 50,
           title: "Status",
           orderable: false,

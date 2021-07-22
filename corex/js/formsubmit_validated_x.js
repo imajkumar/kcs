@@ -2,6 +2,7 @@
 var KTFormControls = function () {
 	// Private functions
 	var _initDemo1 = function () {
+
 		FormValidation.formValidation(
             document.getElementById( "kt_form_add_user_data" ), {
             fields: {
@@ -476,4 +477,119 @@ var KTFormControls = function () {
 
 jQuery(document).ready(function() {
 	KTFormControls.init();
+
+ 
+
+
 });
+
+
+
+ //addded course 
+ FormValidation.formValidation(
+  
+  document.getElementById( "kt_form_add_user_dataCouser" ), {
+  fields: {
+    user_id: {
+      validators: {
+        notEmpty: {
+          message: "Please First Name",
+        },
+      },
+    },
+    course_id: {
+      validators: {
+        notEmpty: {
+          message: "Please First Name",
+        },
+      },
+    },
+   
+
+  },
+
+  plugins: {
+    //Learn more: https://formvalidation.io/guide/plugins
+    trigger: new FormValidation.plugins.Trigger(),
+    // Bootstrap Framework Integration
+    bootstrap: new FormValidation.plugins.Bootstrap(),
+    // Validate fields when clicking the Submit button
+    submitButton: new FormValidation.plugins.SubmitButton(),
+    // Submit the form when all fields are valid
+    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(),  dd
+  },
+}
+).on( "core.form.valid", function ()
+{
+  var _redirect = $( "#kt_form_add_user_dataCouser" ).attr( "data-redirect" );
+
+  var txtAction =$( "input[name=txtAction]" ).val();
+  if(txtAction=="__edit"){
+    var URLLINK= BASE_URL + "/saveUserCouserEdit";
+  }else{
+    
+    var URLLINK= BASE_URL + "/saveUserCouser";
+  }
+
+
+  
+  
+
+  var formData = {
+   
+    user_id: $( "select[name=user_id]" ).val(),
+    course_id: $( "select[name=course_id]" ).val(),    
+
+    _token: $( 'meta[name="csrf-token"]' ).attr( "content" ),
+  };
+
+  $.ajax( {
+    url: URLLINK,
+    type: "POST",
+    data: formData,
+    success: function ( res )
+    {
+      if ( res.status == 1 )
+      {
+        swal
+          .fire( {
+            text: res.msg,
+            icon: "success",
+            buttonsStyling: false,
+            confirmButtonText: "Submited Successfully!",
+            customClass: {
+              confirmButton: "btn font-weight-bold btn-light-primary",
+            },
+          } )
+          .then( function ()
+          {
+            setTimeout( function ()
+            {
+              //KTUtil.scrollTop();
+              // location.reload();
+              var redirect = BASE_URL + "/" + _redirect;
+              location.assign( redirect );
+            }, 500 );
+          } );
+      } else
+      {
+        swal
+          .fire( {
+            text: res.msg,
+            icon: "error",
+            buttonsStyling: false,
+            confirmButtonText: "Ok, got it!",
+            customClass: {
+              confirmButton: "btn font-weight-bold btn-light-primary",
+            },
+          } )
+          .then( function ()
+          {
+            KTUtil.scrollTop();
+          } );
+      }
+    },
+  } );
+} );
+
+//addded course 
